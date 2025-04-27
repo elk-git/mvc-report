@@ -53,3 +53,19 @@ php -S localhost:8888 -t public
 
 You should now be able to open a web browser to `http://localhost:8888` and see the welcome page.
 
+
+Troubleshoot
+-----------------------
+```
+# Show the routes
+bin/console debug:router
+
+# Match a specific route
+bin/console router:match /lucky/number
+
+# Clear the cache
+bin/console cache:clear
+
+# Show available commands
+bin/console
+```

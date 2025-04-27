@@ -22,15 +22,4 @@ class LuckyControllerTwig extends AbstractController
         return $this->render('lucky_number.html.twig', $data);
     }
 
-    #[Route("/home", name: "home")]
-    public function home(): Response
-    {
-        return $this->render('home.html.twig');
-    }
-
-    #[Route("/about", name: "about")]
-    public function about(): Response
-    {
-        return $this->render('about.html.twig');
-    }
 }
