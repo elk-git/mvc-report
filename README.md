@@ -30,11 +30,30 @@ You have installed Composer, the PHP package manager.
 
 
 
+1. Clone repository
+```bash
+# With git and SSH
+git clone git@github.com:elk-git/mvc-report.git
+```
+
+2. Build files
+```bash
+# Just to be sure
+npm run build
+```
+
+3. Start server
+```bash
+# You are in the app/ directory
+symfony server:start
+```
+
+
 Run your app
 -----------------------
 
 1. Use Symphony built cli
-```
+```bash
 # You are in the app/ directory
 symfony server:start
 ```
