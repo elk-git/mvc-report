@@ -34,9 +34,10 @@ Run your app
 -----------------------
 
 1. Use Symphony built cli
-
+```
+# You are in the app/ directory
 symfony server:start
-
+```
 You can reach it through `http://127.0.0.1:8000`.
 
 Needs to be installed, check dokumentation för symphone.
