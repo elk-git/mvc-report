@@ -90,3 +90,8 @@ bin/console cache:clear
 # Show available commands
 bin/console
 ```
+
+API DOCS
+-----------------------
+
+- <b> GET /api/quote </b> Hämta slumpmässigt citat, dagens datum och timestamp.
