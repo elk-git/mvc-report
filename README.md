@@ -4,7 +4,7 @@ author: elk
 ---
 -->
 
-![Symfony image](.img/symfony.png)
+![Github repo image](https://i.redd.it/k9g5xxe3bcl21.jpg)
 
 MVC Report
 ====================
