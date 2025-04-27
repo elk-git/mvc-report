@@ -29,6 +29,8 @@ You have installed PHP in the terminal.
 You have installed Composer, the PHP package manager.
 
 
+Clone and get started
+----------------------------
 
 1. Clone repository
 ```bash

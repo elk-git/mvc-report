@@ -11,7 +11,6 @@ class QuoteControllerJson
     #[Route("/api/quote", name: "api_quote")]
     public function jsonQuote(): Response
     {
-        $number = random_int(0, 100);
         $quote = [
             'The only limit to our realization of tomorrow is our doubts of today.',
             'The future belongs to those who believe in the beauty of their dreams.',

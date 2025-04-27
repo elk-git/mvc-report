@@ -3,6 +3,12 @@
 {% block title %}About{% endblock %}
 
 {% block body %}
-    <h1>Home - MVC</h1>
-    <p>An image which can be clicked on.</p>
+    <h1>Hem</h1>
+    <p>Välkommen till förstasidan.</p>
+    <br>
+    <p>Här är en representativ bild av mig</p>
+    <a href="{{ asset('build/images/profile.jpg') }}">
+        <img src="{{ asset('build/images/profile.jpg') }}" alt="" style="width: 120px;">
+    </a>
+    <p>Mitt namn är Elis och jag är 21 år gammal. Vid sidan om detta studerar jag juridik i Uppsala. Jag är tidigare fotbollspelare och idag är jag aktiv som fotbollsdomare. Mina intressen utöver juridik, fotboll och programmering är löpning och god mat.</p>
 {% endblock %}
