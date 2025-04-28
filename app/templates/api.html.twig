@@ -5,7 +5,7 @@
 {% block body %}
     <h1>API dokumentation</h1>
 
-    {% for path, description in routes %}
-        <li><strong>{{ path }}</strong>: {{ description }}</li>
+    {% for route in routes %}
+        <li><a href="{{ route.url }}"><strong>{{route.request}} {{ route.url }}</strong></a>: {{ route.description }}</li>
     {% endfor %}
 {% endblock %}

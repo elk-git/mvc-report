@@ -13,7 +13,11 @@ class ApiController extends AbstractController
     {
         $data = [
             'routes' => [
-                'GET /api/quote' => 'Hämtar ett slumpmässigt citat, dagens datum och timestamp.',
+                [
+                    'request' => 'GET',
+                    'url' => '/api/quote',
+                    'description' => 'Hämtar ett slumpmässigt citat, dagens datum och timestamp.',
+                ],
             ],
         ];
         return $this->render('api.html.twig', $data);
