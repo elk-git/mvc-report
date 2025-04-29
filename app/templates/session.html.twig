@@ -9,4 +9,6 @@
     {% for key, value in session %}
         <p>{{ key }}: {{ value }}</p>
     {% endfor %}
+    <br>
+    <a href="{{ path('session_delete') }}">Radera/ töm sessionen</a>
 {% endblock %}
