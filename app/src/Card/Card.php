@@ -2,7 +2,7 @@
 
 namespace App\Card;
 
-Class Card
+class Card
 {
     protected $value;
 
