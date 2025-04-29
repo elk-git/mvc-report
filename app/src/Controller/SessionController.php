@@ -13,9 +13,6 @@ class SessionController extends AbstractController
     #[Route("/session", name: "session")]
     public function session(Request $request, SessionInterface $session): Response
     {   
-        $session->set('name', 'elis');
-        $session->set('age', 25);
-        $session->set('email', 'elsidaskdak@kdmga.com');
         $data = [
             'session' => $session->all(),
 
