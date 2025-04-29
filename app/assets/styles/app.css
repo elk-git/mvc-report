@@ -105,3 +105,19 @@ nav {
 .lucky p {
     animation: boldOnOff 200ms ease infinite;
 }
+
+/* Flash */
+
+.flash-notice {
+    background: green;
+    padding: 20px 40px;
+    font-weight: 800;
+    text-align: center;
+}
+
+.flash-warning {
+    background: red;
+    padding: 20px 40px;
+    font-weight: 800;
+    text-align: center;
+}
