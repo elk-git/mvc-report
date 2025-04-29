@@ -17,8 +17,10 @@ h1 {
 nav ul{
     border-bottom: 1px solid #ccc;
     padding: 10px;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 4px;
+    grid-template-rows: auto;
     justify-content: space-between;
     align-items: center;
     list-style: none;
