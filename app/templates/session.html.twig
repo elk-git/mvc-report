@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Session{% endblock %}
+
+{% block body %}
+    <h1>Session</h1>
+    {# <p> {{ session|json_encode }} </p> DEBUG #} 
+    <p><b> Sessionen innehåller (key, value): </b></p>
+    {% for key, value in session %}
+        <p>{{ key }}: {{ value }}</p>
+    {% endfor %}
+{% endblock %}
