@@ -91,6 +91,14 @@ bin/console cache:clear
 bin/console
 ```
 
+Linting
+-----------------------
+```bash
+# Be in the app directory.
+composer csfix:dry
+```
+
+
 API DOCS
 -----------------------
 
