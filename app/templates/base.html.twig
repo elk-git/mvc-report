@@ -27,6 +27,7 @@
                 <li><a href="{{ path('session') }}">Session</a></li>
             </ul>
         </nav>
+        {{ include('flash.html.twig') }}
         {% block body %}{% endblock %}
         <footer class="site-footer">
             <p>Copyright &copy; 2025</p>
