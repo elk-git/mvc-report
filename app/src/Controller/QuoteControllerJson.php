@@ -33,5 +33,3 @@ class QuoteControllerJson
         return $response;
     }
 }
-
-

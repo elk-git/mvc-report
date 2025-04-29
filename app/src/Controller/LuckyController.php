@@ -17,7 +17,7 @@ class LuckyController extends AbstractController
             'number' => $number
         ];
 
-        
+
 
         return $this->render('lucky.html.twig', $data);
     }

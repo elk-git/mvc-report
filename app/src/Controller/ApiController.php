@@ -23,5 +23,3 @@ class ApiController extends AbstractController
         return $this->render('api.html.twig', $data);
     }
 }
-
-
