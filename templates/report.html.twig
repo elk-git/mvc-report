@@ -26,8 +26,19 @@
 
     <p><b>Vilken är din TIL för detta kmom?</b></p>
     <p>Mitt TIL är symfony som vi fått sätta upp och starta oss att lära oss om. Det var kul att få återanvända TWIG och PHP för projektet som vi arbetat med förut.</p>
+
     <h2 id="kmom02">Kmom02</h2>
-    <p>Redovisningstext...</p>
+    <p><b>Förklara kort de objektorienterade konstruktionerna arv, komposition, interface och trait och hur de används i PHP.</b></p>
+    <p>Arv innebär i princip att en klass enkelt sagt ärver en annan klass. Man kan säga att den nya klassen bygger ut den andra. Detta använde jag när jag skapade CardGraphic. Den klassen ärver den vanliga card klassen men lägger till funktionalitet för att hämta ut en UNICODE karaktär som kan representera kortet på hemsidan. Komposition handlar i grunden om att en klass har andra klasser i sig. Exempelvis som i detta fall där en deck-of-cards består av 52 cards (ej räknat jokrar.). Interface har jag inte använt i detta kmom men det innebär i princip ett löfte om att en metod finns i klassen. Jag har inte heller använt trait men detta är omvänt från arv i princip. I ett trait kan man lägga metoder som sedan kan användas i flera klasser. Då behöver man bara ändra i traiten för att ändra funktionalitet i samtliga klasser som har den traiten. </p>
+
+    <p><b>Berätta om din implementation från uppgiften. Hur löste du uppgiften, är du nöjd/missnöjd, vilken förbättringspotential ser du i din koden och dina klasser?.</b></p>
+    <p>Jag är faktiskt i det stora hela väldigt nöjd med min implementation. Mina klasser gick snabbt att faktiskt skriva och göra klart. Man har lärt sig mycket från tidigare kurser och det var kul att inte få så mycket hjälp utan att behöva tänka lite mera själv kring vilka metoder och liknande som kanske behövs. I varje controller gör jag först en liten helper check med om sessionen har ett deck, annars skapas ett nytt, som från starten är sorterad. Den är sorterad då om man skapar en instans av ett deck-of-cards skapar den korten i sorterat läge. Sedan blir det ganska simpelt att visa upp datan. Jag använder endast en template för att visa upp all data under card routen. Detta eftersom det endast behövs visas upp kort, antal kort kvar och de andra använder jag flash-meddelanden för. Jag är lite mindre nöjd med min ApiDeckController som hanterar alla api routes för detta kmom. Det blev bra i början men när jag insåg att jag behövde forms kändes filen lite lång och som att mycket bara skrevs om och om igen. Jag är dock mest nöjd med att jag faktiskt hade hittat symfony forms när jag skummade artikeln om "PHP Best Practices". Det gjorde forms så betydligt mycket lättare att använda i detta kmom, även om jag kanske borde stylat dessa lite... Utöver detta är jag faktiskt väldigt nöjd och det känns som man lär sig. Jag har även sätt till att faktiskt försöka committa bra commits enligt artikeln.</p>
+
+    <p><b>Vilka är dina reflektioner så här långt med att jobb i Symfony med applikationskod enligt MVC?</b></p>
+    <p>Symfony känns som ett bra ramverk för PHP. Det känns mycket bra att man får med sig en del som jag förstår det av AbstractController som man kan ärva ifrån. Det blir ganska lätt att länka model och view på det sättet vi jobbar och det känns som ett språk med endå rimlig nivå. Att läsa symfonys dokumentation är även inte överkomplicerad och det är ett plus.</p>
+
+    <p><b>Vilken är din TIL för detta kmom?</b></p>
+    <p>Mitt TIL för detta kmom är nog hur man kan använda forms i symfony controller för att göra det enklare att hantera datan. Det blir en stooor skillnad. Utöver det är det att man fått lära sig mer om arv, komposition, interface och trait samt hur de faktiskt används. Jag måste även nämna artikeln om hur man committar bra commits. Den var mycket hjälpfull och man lärde sig mycket grundläggande saker.</p>
 
     <h2 id="kmom03">Kmom03</h2>
     <p>Redovisningstext...</p>
