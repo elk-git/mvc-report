@@ -125,3 +125,40 @@ nav {
 }
 
 /* Cards */
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: fit-content;
+    background-color: white;
+    border: 2px solid #000000c4;
+    border-radius: 0.5rem;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.048);
+    margin: 0.5rem;
+    font-family: "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+
+.card span {
+    font-size: 9rem;
+    line-height: 1;
+    display: inline-block;
+    position: relative;
+    top: -0.5rem; /* tweak this as needed */
+}
+
+.hearts {
+    color: red;
+}
+
+.diamonds {
+    color: red;
+}
+
+.spades {
+    color: black;
+}
+.clubs {
+    color: black;
+}
