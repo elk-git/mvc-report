@@ -55,6 +55,22 @@ class DeckOfCards
 
     }
 
+    public function sort(): void
+    {
+        if (empty($this->cards)) {
+            return;
+        }
+        usort($this->cards, function ($a, $b) {
+            $suitOrder = ['Spades', 'Diamonds', 'Clubs', 'Hearts'];
+
+            $suit = array_search($a->getSuit(), $suitOrder) - array_search($b->getSuit(), $suitOrder);
+            if ($suit !== 0) {
+                return $suit;
+            }
+            return $a->getValue() <=> $b->getValue();
+        });
+    }
+
     public function drawCard(): ?CardGraphic
     {
         if (empty($this->cards)) {
