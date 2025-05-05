@@ -15,10 +15,10 @@ class Card
     protected $suit;
 
     private const SUITS = [
-        'Heart' => "\u{2665}",
-        'Diamond' => "\u{2666}",
-        'Club' => "\u{2663}",
-        'Spade' => "\u{2660}"
+        'Hearts',
+        'Diamonds',
+        'Clubs',
+        'Spades'
     ];
     private const VALUES = [
         2 => 2,
@@ -30,22 +30,22 @@ class Card
         8 => 8,
         9 => 9,
         10 => 10,
-        11 => 'J',
-        12 => "\u{2655}",
-        13 => "\u{265A}",
-        14 => 'A'
+        11 => 'Jack',
+        12 => "Queen",
+        13 => "King",
+        14 => 'Ace'
     ];
 
-    public function __construct($val, $suit)
+    public function __construct(int $val, string $suit)
     {
         $this->setValue($val);
         $this->setSuit($suit);
     }
     private function setSuit($suit)
     {
-        $SUITS = array_keys(self::SUITS);
-        if (!in_array($suit, $SUITS)) {
-            throw new \InvalidArgumentException('Invalid suit [Heart, Diamond, Club, Spade].');
+
+        if (!in_array($suit, self::SUITS)) {
+            throw new \InvalidArgumentException('Invalid suit [Hearts, Diamonds, Clubs, Spades].');
         }
 
         $this->suit = $suit;
@@ -54,13 +54,13 @@ class Card
     private function setValue($val)
     {
         if (!is_int($val) || $val < 2 || $val > 14) {
-            throw new \InvalidArgumentException('Invalid value provided.');
+            throw new \InvalidArgumentException('Invalid value.');
         }
 
         $this->value = $val;
     }
 
-    public function getSuit()
+    public function getSuit(): string
     {
         return $this->suit;
     }
@@ -73,13 +73,13 @@ class Card
     public function getCard(): array
     {
         return [
-            'value' => self::VALUES[$this->value],
-            'suit' => self::SUITS[$this->suit]
+            'value' => $this->value,
+            'suit' => $this->suit
         ];
     }
 
-    public function __toString()
+    public function __toString(): string
     {
-        return self::values[$this->value] . ' of ' . slef::suits[$this->suit];
+        return self::VALUES[$this->value] . ' of ' . $this->suit;
     }
 }
