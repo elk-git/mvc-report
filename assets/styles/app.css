@@ -141,7 +141,7 @@ nav {
 }
 
 .card span {
-    font-size: 9rem;
+    font-size: 7rem;
     line-height: 1;
     display: inline-block;
     position: relative;
@@ -161,4 +161,9 @@ nav {
 }
 .clubs {
     color: black;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
 }
