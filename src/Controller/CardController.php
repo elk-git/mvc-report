@@ -134,11 +134,15 @@ class CardController extends AbstractController
                     );
                     break;
                 }
-                $cards[] = $card;
+                $cards[] = [
+                    'value' => $card->getValue(),
+                    'suit' => $card->getSuit(),
+                ];
             }
 
+            $deck2 = new DeckOfCards($cards);
+
             $this->saveDeckToSession($session, $deck);
-            $deck2 = new DeckOfCards(array_map(fn($drawnCard) => ['value' => $drawnCard->getValue(), 'suit' => $drawnCard->getSuit()], $cards));
 
             $data = [
                 'deck' => $deck2,
