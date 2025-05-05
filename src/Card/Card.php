@@ -15,12 +15,13 @@ class Card
     protected $suit;
 
     private const SUITS = [
-        'Hearts',
+        'Spades',
         'Diamonds',
         'Clubs',
-        'Spades'
+        'Hearts'
     ];
     private const VALUES = [
+        1 => 'Ace',
         2 => 2,
         3 => 3,
         4 => 4,
@@ -32,8 +33,7 @@ class Card
         10 => 10,
         11 => 'Jack',
         12 => "Queen",
-        13 => "King",
-        14 => 'Ace'
+        13 => "King"
     ];
 
     public function __construct(int $val, string $suit)
@@ -45,7 +45,7 @@ class Card
     {
 
         if (!in_array($suit, self::SUITS)) {
-            throw new \InvalidArgumentException('Invalid suit [Hearts, Diamonds, Clubs, Spades].');
+            throw new \InvalidArgumentException('Invalid suit [Spades, Diamonds, Clubs, Hearts].');
         }
 
         $this->suit = $suit;
@@ -53,7 +53,7 @@ class Card
 
     private function setValue($val)
     {
-        if (!is_int($val) || $val < 2 || $val > 14) {
+        if (!is_int($val) || $val < 1 || $val > 13) {
             throw new \InvalidArgumentException('Invalid value.');
         }
 
@@ -68,6 +68,15 @@ class Card
     public function getValue(): int
     {
         return $this->value;
+    }
+
+    public static function getSuits(): array
+    {
+        return self::SUITS;
+    }
+    public static function getValues(): array
+    {
+        return self::VALUES;
     }
 
     public function getCard(): array

@@ -8,7 +8,7 @@ class CardGraphic extends Card
     {
         $unicodeMap = [
             'Spades' => [
-                14 => "\u{1F0A1}", // A
+                1 => "\u{1F0A1}", // A
                 2 => "\u{1F0A2}",
                 3 => "\u{1F0A3}",
                 4 => "\u{1F0A4}",
@@ -23,7 +23,7 @@ class CardGraphic extends Card
                 13 => "\u{1F0AE}",
             ],
             'Hearts' => [
-                14 => "\u{1F0B1}",
+                1 => "\u{1F0B1}",
                 2 => "\u{1F0B2}",
                 3 => "\u{1F0B3}",
                 4 => "\u{1F0B4}",
@@ -38,7 +38,7 @@ class CardGraphic extends Card
                 13 => "\u{1F0BE}",
             ],
             'Clubs' => [
-                14 => "\u{1F0D1}", // A
+                1 => "\u{1F0D1}", // A
                 2  => "\u{1F0D2}",
                 3  => "\u{1F0D3}",
                 4  => "\u{1F0D4}",
@@ -53,7 +53,7 @@ class CardGraphic extends Card
                 13 => "\u{1F0DE}",
             ],
             'Diamonds' => [
-                14 => "\u{1F0C1}", // A
+                1 => "\u{1F0C1}", // A
                 2  => "\u{1F0C2}",
                 3  => "\u{1F0C3}",
                 4  => "\u{1F0C4}",
