@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card{% endblock %}
+
+{% block body %}
+    <h1>Card deck</h1>
+    <ul>
+        <li><a href="{{ path('card') }}">Go back</a></li>
+    </ul>
+    <br>
+
+    <p>Här visas de kort som finns i kortleken som är sparad i sessionen.</p>
+    <p>Antal kort i leken: {{ amountOfCards }}</p>
+    <div class="cards">
+
+        {% for card in deck.getCards() %}
+        <div class="card {{card.getSuit()|lower}}"><span>{{card.getUnicodeCard()}}</span></div>
+        {% endfor %}
+
+    </div>
+{% endblock %}
