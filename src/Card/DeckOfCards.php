@@ -5,7 +5,7 @@ namespace App\Card;
 class DeckOfCards
 {
     /** @var Card[] */
-    private array $cards;
+    private array $cards = [];
 
     public function __construct(array $cardsJSON = null)
     {
@@ -36,6 +36,11 @@ class DeckOfCards
         return count($this->cards);
     }
 
+    public function isEmpty(): bool
+    {
+        return empty($this->cards);
+    }
+
     public function getCards(): array
     {
         return $this->cards;
@@ -43,7 +48,11 @@ class DeckOfCards
 
     public function shuffle(): void
     {
+        if (empty($this->cards)) {
+            return;
+        }
         shuffle($this->cards);
+
     }
 
     public function drawCard(): ?CardGraphic
@@ -57,6 +66,9 @@ class DeckOfCards
     public function getJSONDeck(): string
     {
         $jsonDeck = [];
+        if (empty($this->cards)) {
+            return json_encode($jsonDeck);
+        }
         foreach ($this->cards as $card) {
             $jsonDeck[] = [
                 'value' => $card->getValue(),
