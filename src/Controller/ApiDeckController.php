@@ -43,7 +43,7 @@ class ApiDeckController extends AbstractController
             ->setMethod('POST')
             ->add('shuffle', SubmitType::class)
             ->getForm();
-        
+
         $form->handleRequest($request);
 
         return $this->render('deck_form.html.twig', [
@@ -82,14 +82,14 @@ class ApiDeckController extends AbstractController
                 'label' => 'Dra kort',
             ])
             ->getForm();
-        
+
         $form->handleRequest($request);
 
         return $this->render('deck_form.html.twig', [
             'form' => $form->createView(),
         ]);
     }
-    
+
     #[Route("/api/deck/draw", name: "/api/deck/draw", methods: ['POST'])]
     public function api_deck_draw(Request $request, SessionInterface $session): Response
     {
@@ -135,14 +135,14 @@ class ApiDeckController extends AbstractController
                 'label' => 'Dra kort',
             ])
             ->getForm();
-        
+
         $form->handleRequest($request);
 
         return $this->render('deck_form.html.twig', [
             'form' => $form->createView(),
         ]);
     }
-    
+
     #[Route("/api/deck/draw/:number", name: "/api/deck/draw/:number", methods: ['POST'])]
     public function api_deck_draw_number(Request $request, SessionInterface $session): Response
     {
