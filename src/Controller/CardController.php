@@ -24,6 +24,12 @@ class CardController extends AbstractController
     {
         $this->ensureDeckExists($session);
         $deck = new DeckOfCards(json_decode($session->get('deck'), true));
+        $deck->sort();
+        $this->addFlash(
+            'notice',
+            'Kortleken har sorterats.'
+        );
+        $this->saveDeckToSession($session, $deck);
         $data = [
             'deck' => $deck,
             'amountOfCards' => $deck->getAmountOfCards(),
