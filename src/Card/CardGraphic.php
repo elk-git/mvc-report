@@ -75,4 +75,3 @@ class CardGraphic extends Card
         return $unicodeMap[$suit][$value] ?? '?';
     }
 }
-

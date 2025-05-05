@@ -2,7 +2,7 @@
 
 namespace App\Card;
 
-Class DeckOfCards
+class DeckOfCards
 {
     /** @var Card[] */
     private array $cards;
