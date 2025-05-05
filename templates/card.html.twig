@@ -5,6 +5,8 @@
 {% block body %}
     <h1>Card</h1>
     <ul>
+        <li><a href="{{ path('card_deck_reset') }}">Återställ kortleken</a></li>
+        <br>
         <li><a href="{{ path('card_deck') }}">go to /card/deck</a></li>
         <li><a href="{{ path('card_deck_shuffle') }}">go to /card/deck/shuffle</a></li>
         <li><a href="{{ path('card_deck_draw') }}">go to /card/deck/draw</a></li>

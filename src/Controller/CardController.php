@@ -143,6 +143,17 @@ class CardController extends AbstractController
         }
     }
 
+    #[Route("/card/deck/reset", name: "card_deck_reset")]
+    public function card_deck_reset(SessionInterface $session): Response
+    {
+        $session->remove('deck');
+        $this->addFlash(
+            'warning',
+            'Kortleken har resettats.'
+        );
+        return $this->redirectToRoute('card_deck');
+    }
+
     /**
      * Helper method checking if deck exists in session.
      */
