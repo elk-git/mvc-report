@@ -53,7 +53,7 @@ class CardController extends AbstractController
             $deck->shuffle();
             $this->addFlash(
                 'notice',
-                'Kortleken har sorterats.'
+                'Kortleken har shufflats.'
             );
             $this->saveDeckToSession($session, $deck);
 
@@ -163,27 +163,19 @@ class CardController extends AbstractController
     /**
      * Helper method checking if deck exists in session.
      */
-    private function ensureDeckExists(SessionInterface $session): void
+    public static function ensureDeckExists(SessionInterface $session): void
     {
         if (!$session->has('deck')) {
             $deck = new DeckOfCards();
             $session->set('deck', $deck->getJSONDeck());
-            $this->addFlash(
-                'warning',
-                'Inget deck fanns sparat, skapade ett nytt.'
-            );
         }
     }
 
     /**
      * Helper method to save the deck to the session.
      */
-    private function saveDeckToSession(SessionInterface $session, DeckOfCards $deck): void
+    public static function saveDeckToSession(SessionInterface $session, DeckOfCards $deck): void
     {
         $session->set('deck', $deck->getJSONDeck());
-        $this->addFlash(
-            'notice',
-            'Kortleken har sparats i sessionen.'
-        );
     }
 }
