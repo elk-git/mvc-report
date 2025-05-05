@@ -4,16 +4,33 @@ namespace App\Card;
 
 Class DeckOfCards
 {
-    protected array $deck = [];
-    protected array $suits = ['Heart', 'Diamond', 'Club', 'Spade'];
-    protected array $values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+    /** @var Card[] */
+    private array $cards;
 
     public function __construct()
     {
-        foreach ($this->suits as $suit) {
-            foreach ($this->values as $value) {
-                $this->deck[] = new Card($value, $suit);
+        $this->cards = [];
+        foreach (Card::getSuits() as $suit) {
+            foreach (array_keys(Card::getValues()) as $value) {
+                $this->cards[] = new CardGraphic($value, $suit);
             }
         }
+    }
+
+    public function getDeck(): array
+    {
+        return $this->cards;
+    }
+
+    public function getJSONDeck(): string
+    {
+        $jsonDeck = [];
+        foreach ($this->cards as $card) {
+            $jsonDeck[] = [
+                'value' => $card->getValue(),
+                'suit' => $card->getSuit(),
+            ];
+        }
+        return json_encode($jsonDeck);
     }
 }
