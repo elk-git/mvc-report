@@ -31,9 +31,16 @@ class ApiController extends AbstractController
                 ],
                 [
                     'request' => 'POST',
+                    'url' => '/api/deck/draw/',
+                    'description' => 'Drar 1 kort från kortleken.',
+                    'redirect' => '/form/api/deck/draw', // needs a form to be submitted.
+                ],
+                
+                [
+                    'request' => 'POST',
                     'url' => '/api/deck/draw/:number',
                     'description' => 'Drar ett x antal (:number) kort från kortleken. Om inget antal anges dras ett kort.',
-                    'redirect' => '/form/api/deck/draw', // needs a form to be submitted.
+                    'redirect' => '/form/api/deck/draw/number', // needs a form to be submitted.
                 ],
                 [
                     'request' => 'GET',
