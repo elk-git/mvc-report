@@ -13,17 +13,8 @@ class SessionController extends AbstractController
     #[Route("/session", name: "session")]
     public function session(Request $request, SessionInterface $session): Response
     {
-        // if (!$session->get("session_id")) {
-        //     $session->start();
-        //     $session->set("session_id", $session->getId());
-        //     $this->addFlash(
-        //         'notice',
-        //         'Sessionen initierades.'
-        //     );
-        // };
         $data = [
             'session' => $session->all(),
-
         ];
         return $this->render('session.html.twig', $data);
     }
