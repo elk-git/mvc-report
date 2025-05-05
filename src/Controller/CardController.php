@@ -37,18 +37,27 @@ class CardController extends AbstractController
     {
         $this->ensureDeckExists($session);
         $deck = new DeckOfCards(json_decode($session->get('deck'), true));
-        $deck->shuffle();
-        $this->addFlash(
-            'notice',
-            'Kortleken har sorterats.'
-        );
-        $this->saveDeckToSession($session, $deck);
-        $data = [
-            'deck' => $deck,
-            'amountOfCards' => $deck->getAmountOfCards(),
+        if ($deck->isEmpty()) {
+            $this->addFlash(
+                'warning',
+                'Inga kort kvar i kortleken. Kunde inte blanda kortleken. Tips: Töm sessionen!'
+            );
+            return $this->render('card.html.twig');
+        } else {
+            $deck->shuffle();
+            $this->addFlash(
+                'notice',
+                'Kortleken har sorterats.'
+            );
+            $this->saveDeckToSession($session, $deck);
 
-        ];
-        return $this->render('card_deck.html.twig', $data);
+            $data = [
+                'deck' => $deck,
+                'amountOfCards' => $deck->getAmountOfCards(),
+    
+            ];
+            return $this->render('card_deck.html.twig', $data);
+        }
     }
 
     #[Route("/card/deck/draw", name: "card_deck_draw")]
@@ -56,27 +65,37 @@ class CardController extends AbstractController
     {
         $this->ensureDeckExists($session);
         $deck = new DeckOfCards(json_decode($session->get('deck'), true));
-        $card = $deck->drawCard();
-        if ($card === null) {
+        if ($deck->isEmpty()) {
             $this->addFlash(
                 'warning',
-                'Inga kort kvar i kortleken.'
+                'Inga kort kvar i kortleken. Kunde inte dra kort. Tips: Töm sessionen!'
             );
+            return $this->render('card.html.twig');
+        } else {
+            $card = $deck->drawCard();
+            
+            if ($card === null) {
+                $this->addFlash(
+                    'warning',
+                    'Inga kort kvar i kortleken. Kunde inte dra kort.'
+                );
+                return $this->render('card.html.twig');
+            }
+
+            $this->saveDeckToSession($session, $deck);
+            $deck2 = new DeckOfCards([['value' => $card->getValue(), 'suit' => $card->getSuit()]]);
+
+            $this->addFlash(
+                'notice',
+                'Drog kortet: ' . $card->getValue() . ' av ' . $card->getSuit()
+            );
+            $data = [
+                'deck' => $deck2,
+                'amountOfCards' => $deck->getAmountOfCards(),
+
+            ];
+            return $this->render('card_deck.html.twig', $data);
         }
-
-        $this->saveDeckToSession($session, $deck);
-        $deck2 = new DeckOfCards([['value' => $card->getValue(), 'suit' => $card->getSuit()]]);
-
-        $this->addFlash(
-            'notice',
-            'Drog kortet: ' . $card->getValue() . ' av ' . $card->getSuit()
-        );
-        $data = [
-            'deck' => $deck2,
-            'amountOfCards' => $deck->getAmountOfCards(),
-
-        ];
-        return $this->render('card_deck.html.twig', $data);
     }
 
     /**
