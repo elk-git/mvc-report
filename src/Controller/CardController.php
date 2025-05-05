@@ -73,7 +73,7 @@ class CardController extends AbstractController
             return $this->render('card.html.twig');
         } else {
             $card = $deck->drawCard();
-            
+
             if ($card === null) {
                 $this->addFlash(
                     'warning',
@@ -89,6 +89,51 @@ class CardController extends AbstractController
                 'notice',
                 'Drog kortet: ' . $card->getValue() . ' av ' . $card->getSuit()
             );
+            $data = [
+                'deck' => $deck2,
+                'amountOfCards' => $deck->getAmountOfCards(),
+
+            ];
+            return $this->render('card_deck.html.twig', $data);
+        }
+    }
+
+    #[Route("/card/deck/draw/{num<\d+>}", name: "card_deck_draw_num")]
+    public function card_deck_draw_num(SessionInterface $session, int $num): Response
+    {
+        if ($num < 1 || $num > 52) {
+            $this->addFlash(
+                'warning',
+                'Ogiltigt antal kort. Vänligen ange ett nummer mellan 1 och 52.'
+            );
+            return $this->redirectToRoute('card_deck');
+        }
+        $this->ensureDeckExists($session);
+        $deck = new DeckOfCards(json_decode($session->get('deck'), true));
+
+        if ($deck->isEmpty()) {
+            $this->addFlash(
+                'warning',
+                'Kortleken är tom. Tips: töm sessionen!'
+            );
+            return $this->render('card.html.twig');
+        } else {
+            $cards = [];
+            for ($i = 0; $i < $num; $i++) {
+                $card = $deck->drawCard();
+                if ($card === null) {
+                    $this->addFlash(
+                        'warning',
+                        'Inga kort kvar i kortleken. Kunde inte dra fler kort.'
+                    );
+                    break;
+                }
+                $cards[] = $card;
+            }
+
+            $this->saveDeckToSession($session, $deck);
+            $deck2 = new DeckOfCards(array_map(fn($drawnCard) => ['value' => $drawnCard->getValue(), 'suit' => $drawnCard->getSuit()], $cards));
+
             $data = [
                 'deck' => $deck2,
                 'amountOfCards' => $deck->getAmountOfCards(),
