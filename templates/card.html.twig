@@ -17,9 +17,14 @@
 
     <p>Strukturen på klasserna är delvis simpel. Kort klassen gör mest saker. Där sparas både suit och value, vilka också assertas som godkända värden. Instansen av ett kort har därför aldrig unicode, utan det är där jag använt arv och skapat CardGraphic som ärver kortet och sedan skapar metoden för att få ut kortet i unicode. </p>
 
-    <p>Komposition används i DeckOfCards genom att den är en klass uppsatt av flera instanser av kort. Jag har inte ännu använt trait eller interface.</p>
+    <p>Komposition används i DeckOfCards genom att den är en klass uppsatt av flera instanser av kort. Jag har inte ännu använt trait eller interface. Jag insåg dock nu i efterhand att jag gjort det lite konstigt. Deck Of Cards skapar egentligen bara instanser av CardGraphic. Och den vill ha en JSON struktur som inmatning (eller ingenting för att skapa en ny kortlek). Möjligtvis är det bättre practice att skapa vanliga kort och sedan göra om korten till en instans av CardGraphic när man behöver visa upp dessa. Det får bli till nästa kmom. Och sannolikt vill man i konstrukturn att man ger en array av Card instansen och inte JSON struktur.</p>
 
     <p>En sak jag tänkte på nu i efterhand är att jag skapade mina konstater för SUITS i kort klassen. Den borde sannolikt vara i deckofcards klassen då kort kan vara vad som helst men ett deck of card har ju oftast regler på dessa.</p>
 
     <p>Nedan följer UML-diagram.</p>
+
+    <a href="{{ asset('img/UML-kmom02.png') }}">
+    <img src="{{ asset('img/UML-kmom02.png') }}" alt="uml-kmom02" style="width:100%;"/>
+    </a>
+    <p>Klicka på bilden för att få se den i full storlek</p>
 {% endblock %}
