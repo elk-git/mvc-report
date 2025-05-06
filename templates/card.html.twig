@@ -12,4 +12,14 @@
         <li><a href="{{ path('card_deck_draw') }}">go to /card/deck/draw</a></li>
     </ul>
     <br>
+    <h2>Kort text om min struktur</h2>
+    <p>Enkelt förklarat har jag arbetat med 3 klasser. Ett Card (instans av ett spelkort), en CardGraphic (instans av ett spelkort med möjlighet att hämta unicode, ärver från card) samt en DeckOfCards (alla 52 kort i kortleken, ej jokrar inkluderat). Jag har inte skapat en klass för CardHand som ska vara en spelares giv eftersom jag inte gjorde dessa optionella krav, det hade dock inte varit så komplicerat vad jag kan tänka mig.</p>
+
+    <p>Strukturen på klasserna är delvis simpel. Kort klassen gör mest saker. Där sparas både suit och value, vilka också assertas som godkända värden. Instansen av ett kort har därför aldrig unicode, utan det är där jag använt arv och skapat CardGraphic som ärver kortet och sedan skapar metoden för att få ut kortet i unicode. </p>
+
+    <p>Komposition används i DeckOfCards genom att den är en klass uppsatt av flera instanser av kort. Jag har inte ännu använt trait eller interface.</p>
+
+    <p>En sak jag tänkte på nu i efterhand är att jag skapade mina konstater för SUITS i kort klassen. Den borde sannolikt vara i deckofcards klassen då kort kan vara vad som helst men ett deck of card har ju oftast regler på dessa.</p>
+
+    <p>Nedan följer UML-diagram.</p>
 {% endblock %}
