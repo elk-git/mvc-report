@@ -90,37 +90,6 @@ class ApiDeckController extends AbstractController
         ]);
     }
 
-    #[Route("/api/deck/draw", name: "/api/deck/draw", methods: ['POST'])]
-    public function api_deck_draw(Request $request, SessionInterface $session): Response
-    {
-
-
-        CardController::ensureDeckExists($session);
-        $deck = new DeckOfCards(json_decode($session->get('deck'), true));
-        if ($deck->isEmpty()) {
-            return new JsonResponse([
-                'error' => 'Inga kort kvar i kortleken. Kunde inte dra kort.'
-            ]);
-        }
-        $drawnCards = [];
-
-        $card = $deck->drawCard();
-        if ($card) {
-            $drawnCards[] = [
-                'value' => $card->getValue(),
-                'suit' => $card->getSuit(),
-            ];
-        }
-
-        CardController::saveDeckToSession($session, $deck);
-
-        return new JsonResponse([
-            'Antal kort kvar' => $deck->getAmountOfCards(),
-            'Kort' => $drawnCards,
-        ]);
-    }
-
-
 
     #[Route("/form/api/deck/draw/number", name: "/form/api/deck/draw/number")]
     public function form_api_deck_draw_number(Request $request): Response
@@ -143,11 +112,17 @@ class ApiDeckController extends AbstractController
         ]);
     }
 
-    #[Route("/api/deck/draw/:number", name: "/api/deck/draw/:number", methods: ['POST'])]
-    public function api_deck_draw_number(Request $request, SessionInterface $session): Response
+    #[Route("/api/deck/draw", name: "/api/deck/draw", methods: ['POST'])]
+    #[Route("/api/deck/draw/", name: "/api/deck/draw/", methods: ['POST'])]
+    #[Route("/api/deck/draw/{number}", name: "/api/deck/draw/:number", methods: ['POST'])]
+    public function api_deck_draw_number(Request $request, SessionInterface $session, int $number = 1): Response
     {
-        $requestData = $request->request->all();
-        $number = $requestData['form']['number'] ?? 1;
+        // Fick inte HttpClientInterface att fungera.
+        $requestData = $request->request->all() ?? [];
+        $requestNumber = $requestData['form']['number'] ?? null;
+        if ($requestNumber) {
+            $number = $requestNumber;
+        }
 
         if (!is_numeric($number) || $number < 1) {
             return new JsonResponse([
