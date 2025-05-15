@@ -12,7 +12,7 @@ class Card
      *
      * @param int $val
      * @param string $suit
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     protected int $value;
     protected string $suit;
