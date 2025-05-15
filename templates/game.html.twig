@@ -10,6 +10,8 @@
         
     </ul>
     <br>
-    <h2>Kort text om spelet 21.</h2>
-    <p></p>
+    <h2>Blackjack</h2>
+    <p>Jag har valt att göra blackjack. Blackjack är ett kortspel där en eller flera spelare spelar mot en bank. Alla spelare inklusive banken får 2 kort. Face cards är värda 10 och ace är värt 1 eller 11. Målet är att få "blackjack" genom att få sina kort tillsammans till 21. När alla fått två kort får spelarna dra kort tills de känner sig nöjda (jag har inte implementerat split eller double eller insurance). Om man får högre än 21 förlorar man direkt mot banken, även om den senare också blir "tjock". När alla spelare är nöjda eller har förlorat tar banken kort. Banken tar kort tills den blivi tjock eller har 17 eller mer. Om spelare och banken har samma blir det lika. Spelet avslutas automatiskt om dealern har blackjack.</p>
+
+    <a href="{{ path('game/start') }}"><b>Start spelet</b><a>
 {% endblock %}

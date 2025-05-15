@@ -15,11 +15,17 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class ApiDeckController extends AbstractController
 {
-    #[Route("/api/deck", name: "/api/deck", methods: ['GET'])]
-    public function api_deck(SessionInterface $session): Response
+    private CardController $cardController;
+
+    public function __construct(CardController $cardController)
     {
-        CardController::ensureDeckExists($session);
-        $deck = new DeckOfCards(json_decode($session->get('deck'), true));
+        $this->cardController = $cardController;
+    }
+
+    #[Route("/api/deck", name: "/api/deck", methods: ['GET'])]
+    public function apiDeck(SessionInterface $session): Response
+    {
+        $deck = $this->cardController->getDeckAndSaveToSession($session);
         if ($deck->isEmpty()) {
             return new JsonResponse([
                 'error' => 'Inga kort kvar i kortleken. Kan inte sortera.'
@@ -36,7 +42,7 @@ class ApiDeckController extends AbstractController
     }
 
     #[Route("/form/api/deck/shuffle", name: "/form/api/deck/shuffle")]
-    public function form_api_deck_shuffle(Request $request): Response
+    public function formApiDeckShuffle(Request $request): Response
     {
         $form = $this->createFormBuilder()
             ->setAction($this->generateUrl('/api/deck/shuffle'))
@@ -52,17 +58,16 @@ class ApiDeckController extends AbstractController
     }
 
     #[Route("/api/deck/shuffle", name: "/api/deck/shuffle", methods: ['POST'])]
-    public function api_deck_shuffle(SessionInterface $session): Response
+    public function apiDeckShuffle(SessionInterface $session): Response
     {
-        CardController::ensureDeckExists($session);
-        $deck = new DeckOfCards(json_decode($session->get('deck'), true));
+        $deck = $this->cardController->getDeckAndSaveToSession($session);
         if ($deck->isEmpty()) {
             return new JsonResponse([
                 'error' => 'Inga kort kvar i kortleken. Kunde inte blanda kortleken.'
             ]);
         }
         $deck->shuffle();
-        CardController::saveDeckToSession($session, $deck);
+        $this->cardController->getDeckAndSaveToSession($session, $deck);
 
         $data = json_decode($deck->getJSONDeck(), true);
         $response = new JsonResponse($data);
@@ -73,7 +78,7 @@ class ApiDeckController extends AbstractController
     }
 
     #[Route("/form/api/deck/draw", name: "/form/api/deck/draw")]
-    public function form_api_deck_draw(Request $request): Response
+    public function formApiDeckDraw(Request $request): Response
     {
         $form = $this->createFormBuilder()
             ->setAction($this->generateUrl('/api/deck/draw'))
@@ -90,9 +95,8 @@ class ApiDeckController extends AbstractController
         ]);
     }
 
-
     #[Route("/form/api/deck/draw/number", name: "/form/api/deck/draw/number")]
-    public function form_api_deck_draw_number(Request $request): Response
+    public function formApiDeckDrawNumber(Request $request): Response
     {
         $form = $this->createFormBuilder()
             ->setAction($this->generateUrl('/api/deck/draw/:number'))
@@ -115,10 +119,9 @@ class ApiDeckController extends AbstractController
     #[Route("/api/deck/draw", name: "/api/deck/draw", methods: ['POST'])]
     #[Route("/api/deck/draw/", name: "/api/deck/draw/", methods: ['POST'])]
     #[Route("/api/deck/draw/{number}", name: "/api/deck/draw/:number", methods: ['POST'])]
-    public function api_deck_draw_number(Request $request, SessionInterface $session, int $number = 1): Response
+    public function apiDeckDrawNumber(Request $request, SessionInterface $session, int $number = 1): Response
     {
-        // Fick inte HttpClientInterface att fungera.
-        $requestData = $request->request->all() ?? [];
+        $requestData = $request->request->all();
         $requestNumber = $requestData['form']['number'] ?? null;
         if ($requestNumber) {
             $number = $requestNumber;
@@ -130,8 +133,7 @@ class ApiDeckController extends AbstractController
             ]);
         }
 
-        CardController::ensureDeckExists($session);
-        $deck = new DeckOfCards(json_decode($session->get('deck'), true));
+        $deck = $this->cardController->getDeckAndSaveToSession($session);
         if ($deck->isEmpty()) {
             return new JsonResponse([
                 'error' => 'Inga kort kvar i kortleken. Kunde inte dra kort.'
@@ -148,7 +150,7 @@ class ApiDeckController extends AbstractController
             }
         }
 
-        CardController::saveDeckToSession($session, $deck);
+        $this->cardController->getDeckAndSaveToSession($session, $deck);
 
         return new JsonResponse([
             'Antal kort kvar' => $deck->getAmountOfCards(),
@@ -157,12 +159,11 @@ class ApiDeckController extends AbstractController
     }
 
     #[Route("/api/deck/reset", name: "/api/deck/reset", methods: ['GET'])]
-    public function api_deck_reset(SessionInterface $session): Response
+    public function apiDeckReset(SessionInterface $session): Response
     {
         $session->remove('deck');
-        CardController::ensureDeckExists($session);
+        $deck = $this->cardController->getDeckAndSaveToSession($session);
 
-        $deck = new DeckOfCards(json_decode($session->get('deck'), true));
         $data = json_decode($deck->getJSONDeck(), true);
         $response = new JsonResponse($data);
         $response->setEncodingOptions(

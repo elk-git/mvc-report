@@ -3,9 +3,51 @@
 {% block title %}Game - Dokumentation{% endblock %}
 
 {% block body %}
-    <h1>Game 21: dokumentation</h1>
+    <h1>Blackjack: dokumentation</h1>
     <ul>
         <li><a href="{{ path('game') }}">Tillbaka</a></li>
     </ul>
+    <h2>Flödesschema</h2>
+    <p>(klicka på bilden)</p>
+    <a href="{{ asset('build/images/schema_blackjack.png') }}">
+    <img src="{{ asset('build/images/schema_blackjack.png') }}" alt="" style="width: 120px;">
+    </a>
+    <h2> Pseudokod </h2>
+    <p>    Starta spelet <br>
+    Dela ut två kort till spelaren <br>
+    Dela ut två kort till dealern (ett dolt) <br>
+<br>
+Medan spelaren vill ha kort: <br>
+    &nbsp; &nbsp; Ge ett kort till spelaren <br>
+    &nbsp; &nbsp; Om spelarens summa > 21: <br>
+    &nbsp; &nbsp; Avsluta – spelaren förlorar <br>
+<br>
+När spelaren stannar: <br>
+    &nbsp; &nbsp; Visa dealerns dolda kort <br>
+    &nbsp; &nbsp; Medan dealerns summa < 17: <br>
+    &nbsp; &nbsp; Ge kort till dealern <br>
+<br>
+Jämför spelarens och dealerns händer <br>
+Visa resultat
+</p>
+    <h2>Grundläggande kodstruktur</h2>
+    <p> Min tanke är att ha följande.
+    <br>
+    Card - klass som hanterar ett kort. Ger den en valör och värde.
+    <br>
+    Cardgraphic - för att visa upp kortet grafiskt i HTML.
+    <br>
+    Deck of cards - en kortlek på 52 kort. Denna kan blandas innan varje runda och man kan ge ut kort till spelare.
+    <br>
+    CardHand - en spelares hand med kort. Denna håller i sammanlagda resultaten av korten.
+    <br>
+    Player - en klass som består av en card hand ... som består av ... kort etc.
+    <br>
+    PlayerActions - möjligtvis denna klass som hanterar spelares möjliga val.
+    <br>
+    DealerActions - samma som playeractions förutom att metoden är automatisk eftersom dealern är statisk beroende på summan av dennes CardHand.
+    <br>
+    Game - en klass som behandlar ett spel. Denna är en komposition av Players och en Dealer och sköter grundläggande spellogik.
+    </p>
     <br>
 {% endblock %}

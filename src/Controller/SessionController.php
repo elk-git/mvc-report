@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 class SessionController extends AbstractController
 {
     #[Route("/session", name: "session")]
-    public function session(Request $request, SessionInterface $session): Response
+    public function session(SessionInterface $session): Response
     {
         $data = [
             'session' => $session->all(),

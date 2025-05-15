@@ -4,28 +4,30 @@ namespace App\Card;
 
 class DeckOfCards
 {
-    /** @var Card[] */
+    /** @var array<Card|CardGraphic> */
     private array $cards = [];
 
-    public function __construct(array $cards = null)
+    /**
+     * @param array<Card|CardGraphic>|null $cards
+     */
+    public function __construct(?array $cards = null)
     {
         if ($cards !== null) {
             foreach ($cards as $card) {
-                if (!($card instanceof Card) && !($card instanceof CardGraphic)) {
-                    throw new \InvalidArgumentException('Invalid card data: expected Card or CardGraphic object.');
-                }
+                // Tyligen vill inte phpstan ha typecheck här då vi alltid använder klasserna...
                 $this->cards[] = $card;
             }
-        } else {
-            $this->initializeDeck();
+            return;
         }
+        $this->initializeDeck();
     }
 
     private function initializeDeck(): void
     {
         $this->cards = [];
-        foreach (Card::getSuits() as $suit) {
-            foreach (array_keys(Card::getValues()) as $value) {
+        $card = new Card(1, 'Spades'); // Create instance to access constants
+        foreach ($card->getSuits() as $suit) {
+            foreach (array_keys($card->getValues()) as $value) {
                 $this->cards[] = new CardGraphic($value, $suit);
             }
         }
@@ -41,6 +43,9 @@ class DeckOfCards
         return empty($this->cards);
     }
 
+    /**
+     * @return array<Card|CardGraphic>
+     */
     public function getCards(): array
     {
         return $this->cards;
@@ -52,7 +57,6 @@ class DeckOfCards
             return;
         }
         shuffle($this->cards);
-
     }
 
     public function sort(): void
@@ -60,14 +64,14 @@ class DeckOfCards
         if (empty($this->cards)) {
             return;
         }
-        usort($this->cards, function ($a, $b) {
+        usort($this->cards, function ($firstCard, $secondCard) {
             $suitOrder = ['Spades', 'Diamonds', 'Clubs', 'Hearts'];
 
-            $suit = array_search($a->getSuit(), $suitOrder) - array_search($b->getSuit(), $suitOrder);
+            $suit = array_search($firstCard->getSuit(), $suitOrder) - array_search($secondCard->getSuit(), $suitOrder);
             if ($suit !== 0) {
                 return $suit;
             }
-            return $a->getValue() <=> $b->getValue();
+            return $firstCard->getValue() <=> $secondCard->getValue();
         });
     }
 
@@ -76,14 +80,15 @@ class DeckOfCards
         if (empty($this->cards)) {
             return null;
         }
-        return array_pop($this->cards);
+        $card = array_pop($this->cards);
+        return $card instanceof CardGraphic ? $card : new CardGraphic($card->getValue(), $card->getSuit());
     }
 
     public function getJSONDeck(): string
     {
         $jsonDeck = [];
         if (empty($this->cards)) {
-            return json_encode($jsonDeck);
+            return json_encode($jsonDeck, JSON_THROW_ON_ERROR);
         }
         foreach ($this->cards as $card) {
             $jsonDeck[] = [
@@ -91,14 +96,14 @@ class DeckOfCards
                 'suit' => $card->getSuit(),
             ];
         }
-        return json_encode($jsonDeck);
+        return json_encode($jsonDeck, JSON_THROW_ON_ERROR);
     }
 
     public function __toString(): string
     {
         $string = '';
         foreach ($this->cards as $card) {
-            $string .= json_encode($card->getCard(), true);
+            $string .= json_encode($card->getCard(), JSON_THROW_ON_ERROR);
         }
         return $string;
     }

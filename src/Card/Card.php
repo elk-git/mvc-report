@@ -2,6 +2,9 @@
 
 namespace App\Card;
 
+use App\Card\CardGraphic;
+use InvalidArgumentException;
+
 class Card
 {
     /**
@@ -11,8 +14,8 @@ class Card
      * @param string $suit
      * @throws \InvalidArgumentException
      */
-    protected $value;
-    protected $suit;
+    protected int $value;
+    protected string $suit;
 
     private const SUITS = [
         'Spades',
@@ -41,20 +44,20 @@ class Card
         $this->setValue($val);
         $this->setSuit($suit);
     }
-    private function setSuit($suit)
-    {
 
+    private function setSuit(string $suit): void
+    {
         if (!in_array($suit, self::SUITS)) {
-            throw new \InvalidArgumentException('Invalid suit [Spades, Diamonds, Clubs, Hearts].');
+            throw new InvalidArgumentException('Invalid suit [Spades, Diamonds, Clubs, Hearts].');
         }
 
         $this->suit = $suit;
     }
 
-    private function setValue($val)
+    private function setValue(int $val): void
     {
-        if (!is_int($val) || $val < 1 || $val > 13) {
-            throw new \InvalidArgumentException('Invalid value.');
+        if ($val < 1 || $val > 13) {
+            throw new InvalidArgumentException('Invalid value.');
         }
 
         $this->value = $val;
@@ -70,15 +73,25 @@ class Card
         return $this->value;
     }
 
+    /**
+     * @return array<string>
+     */
     public static function getSuits(): array
     {
         return self::SUITS;
     }
+
+    /**
+     * @return array<int, string|int>
+     */
     public static function getValues(): array
     {
         return self::VALUES;
     }
 
+    /**
+     * @return array{value: int, suit: string}
+     */
     public function getCard(): array
     {
         return [

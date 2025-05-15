@@ -20,7 +20,7 @@ class CardController extends AbstractController
     }
 
     #[Route("/card/deck", name: "card_deck")]
-    public function card_deck(SessionInterface $session): Response
+    public function cardDeck(SessionInterface $session): Response
     {
         $deck = $this->getDeckAndSaveToSession($session);
         $deck->sort();
@@ -32,13 +32,12 @@ class CardController extends AbstractController
         $data = [
             'deck' => $deck,
             'amountOfCards' => $deck->getAmountOfCards(),
-
         ];
         return $this->render('card_deck.html.twig', $data);
     }
 
     #[Route("/card/deck/shuffle", name: "card_deck_shuffle")]
-    public function card_deck_shuffle(SessionInterface $session): Response
+    public function cardDeckShuffle(SessionInterface $session): Response
     {
         $deck = $this->getDeckAndSaveToSession($session);
         if ($deck->isEmpty()) {
@@ -47,25 +46,24 @@ class CardController extends AbstractController
                 'Inga kort kvar i kortleken. Kunde inte blanda kortleken. Tips: Töm sessionen!'
             );
             return $this->render('card.html.twig');
-        } else {
-            $deck->shuffle();
-            $this->addFlash(
-                'notice',
-                'Kortleken har shufflats.'
-            );
-            $this->getDeckAndSaveToSession($session, $deck);
-
-            $data = [
-                'deck' => $deck,
-                'amountOfCards' => $deck->getAmountOfCards(),
-
-            ];
-            return $this->render('card_deck.html.twig', $data);
         }
+
+        $deck->shuffle();
+        $this->addFlash(
+            'notice',
+            'Kortleken har shufflats.'
+        );
+        $this->getDeckAndSaveToSession($session, $deck);
+
+        $data = [
+            'deck' => $deck,
+            'amountOfCards' => $deck->getAmountOfCards(),
+        ];
+        return $this->render('card_deck.html.twig', $data);
     }
 
     #[Route("/card/deck/draw", name: "card_deck_draw")]
-    public function card_deck_draw(SessionInterface $session): Response
+    public function cardDeckDraw(SessionInterface $session): Response
     {
         $deck = $this->getDeckAndSaveToSession($session);
         if ($deck->isEmpty()) {
@@ -74,35 +72,33 @@ class CardController extends AbstractController
                 'Inga kort kvar i kortleken. Kunde inte dra kort. Tips: Töm sessionen!'
             );
             return $this->render('card.html.twig');
-        } else {
-            $card = $deck->drawCard();
-
-            if ($card === null) {
-                $this->addFlash(
-                    'warning',
-                    'Inga kort kvar i kortleken. Kunde inte dra kort.'
-                );
-                return $this->render('card.html.twig');
-            }
-
-            $this->getDeckAndSaveToSession($session, $deck);
-            $deck2 = new DeckOfCards([$card]);
-
-            $this->addFlash(
-                'notice',
-                'Drog kortet: ' . $card->getValue() . ' av ' . $card->getSuit()
-            );
-            $data = [
-                'deck' => $deck2,
-                'amountOfCards' => $deck->getAmountOfCards(),
-
-            ];
-            return $this->render('card_deck.html.twig', $data);
         }
+
+        $card = $deck->drawCard();
+        if ($card === null) {
+            $this->addFlash(
+                'warning',
+                'Inga kort kvar i kortleken. Kunde inte dra kort.'
+            );
+            return $this->render('card.html.twig');
+        }
+
+        $this->getDeckAndSaveToSession($session, $deck);
+        $deck2 = new DeckOfCards([$card]);
+
+        $this->addFlash(
+            'notice',
+            'Drog kortet: ' . $card->getValue() . ' av ' . $card->getSuit()
+        );
+        $data = [
+            'deck' => $deck2,
+            'amountOfCards' => $deck->getAmountOfCards(),
+        ];
+        return $this->render('card_deck.html.twig', $data);
     }
 
     #[Route("/card/deck/draw/{num<\d+>}", name: "card_deck_draw_num")]
-    public function card_deck_draw_num(SessionInterface $session, int $num): Response
+    public function cardDeckDrawNum(SessionInterface $session, int $num): Response
     {
         if ($num < 1 || $num > 52) {
             $this->addFlash(
@@ -111,46 +107,41 @@ class CardController extends AbstractController
             );
             return $this->redirectToRoute('card_deck');
         }
-        $deck = $this->getDeckAndSaveToSession($session);
 
+        $deck = $this->getDeckAndSaveToSession($session);
         if ($deck->isEmpty()) {
             $this->addFlash(
                 'warning',
                 'Kortleken är tom. Tips: töm sessionen!'
             );
             return $this->render('card.html.twig');
-        } else {
-            $cards = [];
-            for ($i = 0; $i < $num; $i++) {
-                $card = $deck->drawCard();
-                if ($card === null) {
-                    $this->addFlash(
-                        'warning',
-                        'Inga kort kvar i kortleken. Kunde inte dra fler kort.'
-                    );
-                    break;
-                }
-                $cards[] = [
-                    'value' => $card->getValue(),
-                    'suit' => $card->getSuit(),
-                ];
-            }
-
-            $deck2 = new DeckOfCards($cards);
-
-            $this->getDeckAndSaveToSession($session, $deck);
-
-            $data = [
-                'deck' => $deck2,
-                'amountOfCards' => $deck->getAmountOfCards(),
-
-            ];
-            return $this->render('card_deck.html.twig', $data);
         }
+
+        $cards = [];
+        for ($i = 0; $i < $num; $i++) {
+            $card = $deck->drawCard();
+            if ($card === null) {
+                $this->addFlash(
+                    'warning',
+                    'Inga kort kvar i kortleken. Kunde inte dra fler kort.'
+                );
+                break;
+            }
+            $cards[] = $card;
+        }
+
+        $deck2 = new DeckOfCards($cards);
+        $this->getDeckAndSaveToSession($session, $deck);
+
+        $data = [
+            'deck' => $deck2,
+            'amountOfCards' => $deck->getAmountOfCards(),
+        ];
+        return $this->render('card_deck.html.twig', $data);
     }
 
     #[Route("/card/deck/reset", name: "card_deck_reset")]
-    public function card_deck_reset(SessionInterface $session): Response
+    public function cardDeckReset(SessionInterface $session): Response
     {
         $session->remove('deck');
         $this->addFlash(
@@ -160,20 +151,25 @@ class CardController extends AbstractController
         return $this->redirectToRoute('card_deck');
     }
 
-
-    public static function getDeckAndSaveToSession(SessionInterface $session, DeckOfCards $deck = null): DeckOfCards
+    public function getDeckAndSaveToSession(SessionInterface $session, ?DeckOfCards $deck = null): DeckOfCards
     {
-        // Om deck provided, spara i sessionen och returnerna.
-        if ($deck) {
+        if ($deck !== null) {
             $session->set('deck', $deck);
-            return new DeckOfCards($deck->getCards());
+            return $deck;
         }
-        // If deck not provided och inte i session, skapa nytt.
+
         if (!$session->has('deck')) {
             $deck = new DeckOfCards();
             $session->set('deck', $deck);
             return $deck;
         }
-        return new DeckOfCards($session->get('deck')->getCards());
+
+        $sessionDeck = $session->get('deck');
+        if (!$sessionDeck instanceof DeckOfCards) {
+            $deck = new DeckOfCards();
+            $session->set('deck', $deck);
+            return $deck;
+        }
+        return $sessionDeck;
     }
 }
