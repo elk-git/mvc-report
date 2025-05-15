@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Game{% endblock %}
+
+{% block body %}
+    <h1>Blackjack:</h1>
+    <br>
+    <br>
+
+    <h3> Dealer <h3>
+
+    {% for card in dealer.getCards() %}
+        <div class="card {{card.getSuit()|lower}}"><span>{{card.getUnicodeCard()}}</span></div>
+    {% endfor %}
+
+    <br>
+    <br>
+
+    <h3> Spelare 1 <h3>
+
+    {% for card in player.getCards() %}
+        <div class="card {{card.getSuit()|lower}}"><span>{{card.getUnicodeCard()}}</span></div>
+    {% endfor %}
+
+{% endblock %}
