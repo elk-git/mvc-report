@@ -22,14 +22,13 @@ class CardController extends AbstractController
     #[Route("/card/deck", name: "card_deck")]
     public function card_deck(SessionInterface $session): Response
     {
-        $this->ensureDeckExists($session);
-        $deck = new DeckOfCards($session->get('deck')->getCards());
+        $deck = $this->getDeckAndSaveToSession($session);
         $deck->sort();
         $this->addFlash(
             'notice',
             'Kortleken har sorterats.'
         );
-        $this->saveDeckToSession($session, $deck);
+        $this->getDeckAndSaveToSession($session, $deck);
         $data = [
             'deck' => $deck,
             'amountOfCards' => $deck->getAmountOfCards(),
@@ -41,8 +40,7 @@ class CardController extends AbstractController
     #[Route("/card/deck/shuffle", name: "card_deck_shuffle")]
     public function card_deck_shuffle(SessionInterface $session): Response
     {
-        $this->ensureDeckExists($session);
-        $deck = new DeckOfCards($session->get('deck')->getCards());
+        $deck = $this->getDeckAndSaveToSession($session);
         if ($deck->isEmpty()) {
             $this->addFlash(
                 'warning',
@@ -55,7 +53,7 @@ class CardController extends AbstractController
                 'notice',
                 'Kortleken har shufflats.'
             );
-            $this->saveDeckToSession($session, $deck);
+            $this->getDeckAndSaveToSession($session, $deck);
 
             $data = [
                 'deck' => $deck,
@@ -69,8 +67,7 @@ class CardController extends AbstractController
     #[Route("/card/deck/draw", name: "card_deck_draw")]
     public function card_deck_draw(SessionInterface $session): Response
     {
-        $this->ensureDeckExists($session);
-        $deck = new DeckOfCards($session->get('deck')->getCards());
+        $deck = $this->getDeckAndSaveToSession($session);
         if ($deck->isEmpty()) {
             $this->addFlash(
                 'warning',
@@ -88,7 +85,7 @@ class CardController extends AbstractController
                 return $this->render('card.html.twig');
             }
 
-            $this->saveDeckToSession($session, $deck);
+            $this->getDeckAndSaveToSession($session, $deck);
             $deck2 = new DeckOfCards([$card]);
 
             $this->addFlash(
@@ -114,8 +111,7 @@ class CardController extends AbstractController
             );
             return $this->redirectToRoute('card_deck');
         }
-        $this->ensureDeckExists($session);
-        $deck = new DeckOfCards($session->get('deck'));
+        $deck = $this->getDeckAndSaveToSession($session);
 
         if ($deck->isEmpty()) {
             $this->addFlash(
@@ -142,7 +138,7 @@ class CardController extends AbstractController
 
             $deck2 = new DeckOfCards($cards);
 
-            $this->saveDeckToSession($session, $deck);
+            $this->getDeckAndSaveToSession($session, $deck);
 
             $data = [
                 'deck' => $deck2,
@@ -164,22 +160,20 @@ class CardController extends AbstractController
         return $this->redirectToRoute('card_deck');
     }
 
-    /**
-     * Helper method checking if deck exists in session.
-     */
-    public static function ensureDeckExists(SessionInterface $session): void
+
+    public static function getDeckAndSaveToSession(SessionInterface $session, DeckOfCards $deck = null): DeckOfCards
     {
+        // Om deck provided, spara i sessionen och returnerna.
+        if ($deck) {
+            $session->set('deck', $deck);
+            return new DeckOfCards($deck->getCards());
+        }
+        // If deck not provided och inte i session, skapa nytt.
         if (!$session->has('deck')) {
             $deck = new DeckOfCards();
             $session->set('deck', $deck);
+            return $deck;
         }
-    }
-
-    /**
-     * Helper method to save the deck to the session.
-     */
-    public static function saveDeckToSession(SessionInterface $session, DeckOfCards $deck): void
-    {
-        $session->set('deck', $deck);
+        return new DeckOfCards($session->get('deck')->getCards());
     }
 }
