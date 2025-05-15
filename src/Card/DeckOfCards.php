@@ -7,14 +7,14 @@ class DeckOfCards
     /** @var Card[] */
     private array $cards = [];
 
-    public function __construct(array $cardsJSON = null)
+    public function __construct(array $cards = null)
     {
-        if ($cardsJSON !== null) {
-            foreach ($cardsJSON as $card) {
-                if (!isset($card['value']) || !isset($card['suit'])) {
-                    throw new \InvalidArgumentException('Invalid card data.');
+        if ($cards !== null) {
+            foreach ($cards as $card) {
+                if (!($card instanceof Card) && !($card instanceof CardGraphic)) {
+                    throw new \InvalidArgumentException('Invalid card data: expected Card or CardGraphic object.');
                 }
-                $this->cards[] = new CardGraphic($card['value'], $card['suit']);
+                $this->cards[] = $card;
             }
         } else {
             $this->initializeDeck();
@@ -92,5 +92,14 @@ class DeckOfCards
             ];
         }
         return json_encode($jsonDeck);
+    }
+
+    public function __toString(): string
+    {
+        $string = '';
+        foreach ($this->cards as $card) {
+            $string .= json_encode($card->getCard(), true);
+        }
+        return $string;
     }
 }
