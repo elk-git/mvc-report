@@ -2,13 +2,15 @@
 
 namespace App\Game;
 
+use App\Game\CardHand;
+
 class Player
 {
-    /** @var array<Card> */
-    protected array $cards = [];
+    /** @var CardHand */
+    protected CardHand $hand;
 
     /**
-     * @param array<Card> $cards
+     * @param CardHand $cardHand
      */
     public function __construct(CardHand $cardHand = null)
     {
