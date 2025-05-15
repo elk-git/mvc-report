@@ -23,7 +23,7 @@ class CardController extends AbstractController
     public function card_deck(SessionInterface $session): Response
     {
         $this->ensureDeckExists($session);
-        $deck = new DeckOfCards(json_decode($session->get('deck'), true));
+        $deck = new DeckOfCards($session->get('deck')->getCards());
         $deck->sort();
         $this->addFlash(
             'notice',
@@ -42,7 +42,7 @@ class CardController extends AbstractController
     public function card_deck_shuffle(SessionInterface $session): Response
     {
         $this->ensureDeckExists($session);
-        $deck = new DeckOfCards(json_decode($session->get('deck'), true));
+        $deck = new DeckOfCards($session->get('deck')->getCards());
         if ($deck->isEmpty()) {
             $this->addFlash(
                 'warning',
@@ -70,7 +70,7 @@ class CardController extends AbstractController
     public function card_deck_draw(SessionInterface $session): Response
     {
         $this->ensureDeckExists($session);
-        $deck = new DeckOfCards(json_decode($session->get('deck'), true));
+        $deck = new DeckOfCards($session->get('deck')->getCards());
         if ($deck->isEmpty()) {
             $this->addFlash(
                 'warning',
@@ -89,7 +89,7 @@ class CardController extends AbstractController
             }
 
             $this->saveDeckToSession($session, $deck);
-            $deck2 = new DeckOfCards([['value' => $card->getValue(), 'suit' => $card->getSuit()]]);
+            $deck2 = new DeckOfCards([$card]);
 
             $this->addFlash(
                 'notice',
@@ -115,7 +115,7 @@ class CardController extends AbstractController
             return $this->redirectToRoute('card_deck');
         }
         $this->ensureDeckExists($session);
-        $deck = new DeckOfCards(json_decode($session->get('deck'), true));
+        $deck = new DeckOfCards($session->get('deck'));
 
         if ($deck->isEmpty()) {
             $this->addFlash(
@@ -171,7 +171,7 @@ class CardController extends AbstractController
     {
         if (!$session->has('deck')) {
             $deck = new DeckOfCards();
-            $session->set('deck', $deck->getJSONDeck());
+            $session->set('deck', $deck);
         }
     }
 
@@ -180,6 +180,6 @@ class CardController extends AbstractController
      */
     public static function saveDeckToSession(SessionInterface $session, DeckOfCards $deck): void
     {
-        $session->set('deck', $deck->getJSONDeck());
+        $session->set('deck', $deck);
     }
 }
