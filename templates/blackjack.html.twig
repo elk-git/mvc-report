@@ -9,7 +9,7 @@
 
     <h3> Dealer <h3>
 
-    {% for card in dealer.getCards() %}
+    {% for card in dealer.getHand() %}
         <div class="card {{card.getSuit()|lower}}"><span>{{card.getUnicodeCard()}}</span></div>
     {% endfor %}
 
@@ -18,7 +18,7 @@
 
     <h3> Spelare 1 <h3>
 
-    {% for card in player.getCards() %}
+    {% for card in player.getHand() %}
         <div class="card {{card.getSuit()|lower}}"><span>{{card.getUnicodeCard()}}</span></div>
     {% endfor %}
 

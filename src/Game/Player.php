@@ -17,4 +17,12 @@ class Player
         // No type check needed as we are using the Card class.
         $this->hand = $cardHand ?? new CardHand();
     }
+
+    /**
+     * @return CardHand
+     */
+    public function getHand(): CardHand
+    {
+        return $this->hand;
+    }
 }

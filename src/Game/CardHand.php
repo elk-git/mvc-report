@@ -7,6 +7,24 @@ class CardHand
     /** @var array<Card|CardGraphic> */
     protected array $cards = [];
 
+
+    private const VALUES = [
+        'Ace' => 11, // This could be 1 or 11. 1 is handled in the getTotalValue method.
+        2 => 2,
+        3 => 3,
+        4 => 4,
+        5 => 5,
+        6 => 6,
+        7 => 7,
+        8 => 8,
+        9 => 9,
+        10 => 10,
+        11 => 10,
+        12 => 10,
+        13 => 10
+    ];
+    private const BLACKJACK_VALUE = 21;
+
     /**
      * @param array<Card|CardGraphic> $cards
      */
@@ -41,8 +59,23 @@ class CardHand
     {
         $totalValue = 0;
         foreach ($this->cards as $card) {
-            $totalValue += $card->getValue();
+            $cardValue = self::VALUES[$card->getValue()];
+            if ($totalValue + $cardValue > self::BLACKJACK_VALUE && $card->getValue() === 'Ace') {
+                $cardValue = 1;
+            }
+            $totalValue += $cardValue;
+
+            // NOTERA ATT DETTA ENDAST GÖRS PÅ DETTA KORT. MÅSTE FIXA SÅ DET ALLTID BLIR SÅ!!!!!
         }
         return $totalValue;
+    }
+
+
+    public function hasBlackJack(): bool
+    {
+        if ($this->getTotalValue() === self::BLACKJACK_VALUE) {
+            return true;
+        }
+        return false;
     }
 }
