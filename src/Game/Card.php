@@ -16,6 +16,7 @@ class Card
      */
     protected int $value;
     protected string $suit;
+    private bool $isFaceDown = false;
 
     private const SUITS = [
         'Spades',
@@ -45,6 +46,16 @@ class Card
         $this->setSuit($suit);
     }
 
+    public function isFaceDown(): bool
+    {
+        return $this->isFaceDown;
+    }
+
+    public function setFaceDown(bool $isFaceDown): void
+    {
+        $this->isFaceDown = $isFaceDown;
+    }
+
     private function setSuit(string $suit): void
     {
         if (!in_array($suit, self::SUITS)) {
@@ -65,6 +76,9 @@ class Card
 
     public function getSuit(): string
     {
+        if ($this->isFaceDown()) {
+            return 'face-down';
+        }
         return $this->suit;
     }
 
@@ -90,18 +104,14 @@ class Card
     }
 
     /**
-     * @return array{value: int, suit: string}
+     * @return array{value: int, suit: string, isFaceDown: bool}
      */
     public function getCard(): array
     {
         return [
             'value' => $this->value,
-            'suit' => $this->suit
+            'suit' => $this->suit,
+            'isFaceDown' => $this->isFaceDown
         ];
-    }
-
-    public function __toString(): string
-    {
-        return self::VALUES[$this->value] . ' of ' . $this->suit;
     }
 }

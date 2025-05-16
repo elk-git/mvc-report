@@ -15,9 +15,6 @@ enum PlayerAction: string
 
 class PlayerActions extends Player
 {
-    private bool $endTurn = false;
-    private string $endMessage;
-    private string $name = "Player";
     private const BLACKJACK_VALUE = 21;
 
     /**
@@ -27,10 +24,7 @@ class PlayerActions extends Player
      */
     public function play(PlayerAction $action, ?CardGraphic $card = null): void
     {
-        if ($this->endTurn) {
-            throw new Exception("Player has ended their turn, cannot play.");
-        }
-        if ($action === PlayerAction::HIT) {
+        if ($action === PlayerAction::HIT && $card !== null) {
             $this->hit($card);
         }
 
@@ -46,10 +40,8 @@ class PlayerActions extends Player
     protected function hit(Card|CardGraphic $card): void
     {
         $this->hand->addCard($card);
-        $this->endTurn = $this->isBusted();
-        if ($this->endTurn) {
-            $this->endMessage = $this->name . " has busted.";
-        }
+        return;
+
     }
 
     /**
@@ -57,8 +49,7 @@ class PlayerActions extends Player
      */
     protected function stand(): void
     {
-        $this->endMessage = $this->name . " stands.";
-        $this->endTurn = true;
+        return;
     }
 
     /**
@@ -68,17 +59,6 @@ class PlayerActions extends Player
     {
         if ($this->hand->getTotalValue() > self::BLACKJACK_VALUE) {
             return true;
-        }
-        return false;
-    }
-
-    /**
-     * @return string|bool
-     */
-    public function getEndMessage(): string|bool
-    {
-        if ($this->endTurn) {
-            return $this->endMessage;
         }
         return false;
     }

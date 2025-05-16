@@ -9,7 +9,7 @@ class CardHand
 
 
     private const VALUES = [
-        'Ace' => 11, // This could be 1 or 11. 1 is handled in the getTotalValue method.
+        1 => 11, // This could be 1 or 11. 1 is handled in the getTotalValue method.
         2 => 2,
         3 => 3,
         4 => 4,
@@ -58,24 +58,74 @@ class CardHand
     public function getTotalValue(): int
     {
         $totalValue = 0;
-        foreach ($this->cards as $card) {
-            $cardValue = self::VALUES[$card->getValue()];
-            if ($totalValue + $cardValue > self::BLACKJACK_VALUE && $card->getValue() === 'Ace') {
-                $cardValue = 1;
-            }
-            $totalValue += $cardValue;
+        $aces = [];
 
-            // NOTERA ATT DETTA ENDAST GÖRS PÅ DETTA KORT. MÅSTE FIXA SÅ DET ALLTID BLIR SÅ!!!!!
+        foreach ($this->cards as $card) {
+            if ($card->isFaceDown()) {
+                continue;
+            }
+            if ($card->getValue() === 1) { // Ace
+                $aces[] = $card;
+                continue;
+            }
+            $totalValue += self::VALUES[$card->getValue()];
+
         }
+
+        // Lägg till aces 11 om det går annars 1.
+        foreach ($aces as $key => $ace) {
+            $ace = $ace;
+            if ($totalValue + 11 <= self::BLACKJACK_VALUE && $key === count($aces) - 1) {
+                $totalValue += 11;
+                continue;
+            }
+            $totalValue += 1;
+
+        }
+
+        return $totalValue;
+    }
+
+    public function getTotalValueWithFaceDown(): int
+    {
+        $totalValue = 0;
+        $aces = [];
+
+        foreach ($this->cards as $card) {
+            if ($card->getValue() === 1) { // Ace
+                $aces[] = $card;
+                continue;
+            }
+            $totalValue += self::VALUES[$card->getValue()];
+        }
+
+        // Lägg till aces 11 om det går annars 1.
+        foreach ($aces as $key => $ace) {
+            $ace = $ace;
+            if ($totalValue + 11 <= self::BLACKJACK_VALUE && $key === count($aces) - 1) {
+                $totalValue += 11;
+                continue;
+            }
+            $totalValue += 1;
+        }
+
         return $totalValue;
     }
 
 
     public function hasBlackJack(): bool
     {
-        if ($this->getTotalValue() === self::BLACKJACK_VALUE) {
+        if ($this->getTotalValueWithFaceDown() === self::BLACKJACK_VALUE) {
             return true;
         }
         return false;
+    }
+
+    /**
+     * @return array<array{value: int, suit: string, isFaceDown: bool}>
+     */
+    public function getJSONCards(): array
+    {
+        return array_map(fn ($card) => $card->getCard(), $this->cards);
     }
 }
