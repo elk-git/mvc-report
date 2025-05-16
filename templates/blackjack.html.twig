@@ -7,19 +7,42 @@
     <br>
     <br>
 
-    <h3> Dealer <h3>
+    
 
-    {% for card in dealer.getHand() %}
+    {% if isGameDone %}
+        <div class="game-done">
+        <h2>Spelet är slut!</h2>
+        <p><b>{{ gameMessage }}</b></p>
+        <a href="{{ path('game/reset') }}">Reset</a>
+        </div>
+    {% else %}
+        <p><b>{{ gameMessage }}</b></p>
+    {% endif %}
+
+    <h3> Dealer </h3>
+    <p><b>Värde:</b> {{ dealer.getTotalValue() }}</p>
+<div style="display: flex; flex-direction: row;">
+    {% for card in dealer.getCards() %}
         <div class="card {{card.getSuit()|lower}}"><span>{{card.getUnicodeCard()}}</span></div>
     {% endfor %}
+    </div>
 
     <br>
     <br>
 
-    <h3> Spelare 1 <h3>
-
-    {% for card in player.getHand() %}
+    <h3> Spelare</h3>
+    <p><b>Värde:</b> {{ player.getTotalValue() }}</p>
+    <div style="display: flex; flex-direction: row;">
+    {% for card in player.getCards() %}
         <div class="card {{card.getSuit()|lower}}"><span>{{card.getUnicodeCard()}}</span></div>
     {% endfor %}
+    </div>
+    {% if not isGameDone %}
+        <p style="display: flex; flex-direction: row; gap: 20px;">
+        <a href="{{ path('game/hit') }}">Hit</a>
+        <a href="{{ path('game/stand') }}">Stand</a>
+        <a href="{{ path('game/reset') }}">Reset</a>
+    </p>
+    {% endif %}
 
 {% endblock %}
