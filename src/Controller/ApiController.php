@@ -47,6 +47,11 @@ class ApiController extends AbstractController
                     'url' => '/api/deck/reset',
                     'description' => 'Återställer kortleken till en ny sorterad kortlek.',
                 ],
+                [
+                    'request' => 'GET',
+                    'url' => '/api/game',
+                    'description' => 'Visar upp aktuell ställning i blackjack spelet.',
+                ],
             ],
         ];
         return $this->render('api.html.twig', $data);
