@@ -82,8 +82,18 @@ class GameController extends AbstractController
     #[Route("/api/game", name: "/api/game", methods: ['GET'])]
     public function apiDeckReset(SessionInterface $session): Response
     {
+        if (!$session->has('game')) {
+            $data = [
+                'message' => 'Inget spel sparat.'
+            ];
+            $response = new JsonResponse($data);
+            $response->setEncodingOptions(
+                $response->getEncodingOptions() | JSON_PRETTY_PRINT
+            );
+            return $response;
+        }
 
-        $game = $session->get('game') ?? ['message' => 'Inget spel sparat.'];
+        $game = $session->get('game');
         $data = json_decode($game->getJSONGame(), true);
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
