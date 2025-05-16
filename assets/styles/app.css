@@ -163,7 +163,21 @@ nav {
     color: black;
 }
 
+.face-down {
+    color: #1163ddc4;
+}
+
 .cards {
     display: flex;
     flex-wrap: wrap;
+}
+
+.game-done {
+    background: black;
+    color: white;
+    text-align: center;
+    z-index: 1000;
+    width: 100%;
+    height: fit-content;
+    padding: 40px 0;
 }
