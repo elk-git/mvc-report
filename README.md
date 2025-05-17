@@ -95,7 +95,21 @@ Linting
 -----------------------
 ```bash
 # Be in the app directory.
-composer csfix:dry
+composer lint
+```
+
+Docs
+-----------------------
+```bash
+# Be in the app directory.
+composer phpdocs
+```
+
+Unit testing
+-----------------------
+```bash
+# Be in the app directory.
+composer phpunit
 ```
 
 
