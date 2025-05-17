@@ -573,117 +573,117 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Game\\Game",
             "name": "Game",
-            "summary": "",
+            "summary": "Game\u0020instance\u0020creates\u0020a\u0020blackjack\u0020game.\u0020To\u0020start\u0020the\u0020game,\u0020call\u0020the\u0020startGame\u0020method.",
             "url": "classes/App-Game-Game.html"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Game\u0020constructor.\u0020If\u0020no\u0020arguments\u0020are\u0020provided,\u0020default\u0020values\u0020will\u0020be\u0020used.",
             "url": "classes/App-Game-Game.html#method___construct"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgetGameMessage\u0028\u0029",
             "name": "getGameMessage",
-            "summary": "",
+            "summary": "Get\u0020the\u0020current\u0020game\u0020message\u0020that\u0020corresponds\u0020to\u0020the\u0020current\u0020game\u0020state.",
             "url": "classes/App-Game-Game.html#method_getGameMessage"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AisGameDone\u0028\u0029",
             "name": "isGameDone",
-            "summary": "",
+            "summary": "Check\u0020if\u0020the\u0020game\u0020is\u0020done.",
             "url": "classes/App-Game-Game.html#method_isGameDone"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgetState\u0028\u0029",
             "name": "getState",
-            "summary": "",
+            "summary": "Get\u0020the\u0020current\u0020game\u0020state.",
             "url": "classes/App-Game-Game.html#method_getState"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgetPlayer\u0028\u0029",
             "name": "getPlayer",
-            "summary": "",
+            "summary": "Get\u0020the\u0020player\u0020instance.",
             "url": "classes/App-Game-Game.html#method_getPlayer"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgetDealer\u0028\u0029",
             "name": "getDealer",
-            "summary": "",
+            "summary": "Get\u0020the\u0020dealer\u0020instance.",
             "url": "classes/App-Game-Game.html#method_getDealer"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgetDeck\u0028\u0029",
             "name": "getDeck",
-            "summary": "",
+            "summary": "Get\u0020the\u0020deck\u0020instance.",
             "url": "classes/App-Game-Game.html#method_getDeck"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AsetState\u0028\u0029",
             "name": "setState",
-            "summary": "",
+            "summary": "Set\u0020the\u0020current\u0020game\u0020state.",
             "url": "classes/App-Game-Game.html#method_setState"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AstartGame\u0028\u0029",
             "name": "startGame",
-            "summary": "",
+            "summary": "Start\u0020the\u0020game.\u0020It\u0020will\u0020shuffle\u0020the\u0020deck\u0020and\u0020deal\u0020the\u0020starting\u0020cards\u0020\u0028two\u0020each\u0020and\u0020dealer\u0020one\u0020face\u0020down\u0029.\u0020It\u0020will\u0020change\u0020the\u0020game\u0020state\u0020to\u0020PlayerTurn.",
             "url": "classes/App-Game-Game.html#method_startGame"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgetAfterFlopState\u0028\u0029",
             "name": "getAfterFlopState",
-            "summary": "",
+            "summary": "Get\u0020GameState\u0020after\u0020\u0022the\u0020flop\u0022,\u0020i.e\u0020after\u0020the\u0020startGame\u0020method\u0020i.e\u0020after\u0020giving\u0020first\u0020to\u0020cards\u0020to\u0020each\u0020player.\u0020It\u0020will\u0020check\u0020for\u0020dealer\u0020blackjack\u0020with\u0020the\u0020face\u002Ddown\u0020card\u0020aswell.",
             "url": "classes/App-Game-Game.html#method_getAfterFlopState"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgetAfterGameState\u0028\u0029",
             "name": "getAfterGameState",
-            "summary": "",
+            "summary": "Get\u0020GameState\u0020after\u0020the\u0020dealer\u0020has\u0020played.",
             "url": "classes/App-Game-Game.html#method_getAfterGameState"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AplayerHit\u0028\u0029",
             "name": "playerHit",
-            "summary": "",
+            "summary": "Method\u0020will\u0020let\u0020the\u0020player\u0020\u0022hit\u0022\u0020\u0028draw\u0020a\u0020card\u0029.\u0020It\u0020will\u0020update\u0020the\u0020gamestate\u0020accordingly\u0020if\u0020the\u0020player\u0020busts.",
             "url": "classes/App-Game-Game.html#method_playerHit"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AplayerStand\u0028\u0029",
             "name": "playerStand",
-            "summary": "",
+            "summary": "Method\u0020will\u0020let\u0020the\u0020player\u0020\u0022stand\u0022\u0020\u0028not\u0020draw\u0020a\u0020card\u0029.\u0020It\u0020will\u0020update\u0020the\u0020gamestate\u0020to\u0020dealer\u0020turn.\u0020And\u0020call\u0020the\u0020dealerplay\u0020method.",
             "url": "classes/App-Game-Game.html#method_playerStand"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003ArevealDealerCard\u0028\u0029",
             "name": "revealDealerCard",
-            "summary": "",
+            "summary": "Method\u0020will\u0020reveal\u0020the\u0020dealer\u0027s\u0020second\u0020card.",
             "url": "classes/App-Game-Game.html#method_revealDealerCard"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AdealerPlay\u0028\u0029",
             "name": "dealerPlay",
-            "summary": "",
+            "summary": "Method\u0020will\u0020let\u0020the\u0020dealer\u0020\u0022play\u0022\u0020\u0028draw\u0020cards\u0029.\u0020It\u0020will\u0020update\u0020the\u0020gamestate\u0020accordingly\u0020if\u0020the\u0020dealer\u0020busts\u0020or\u0020stands.\u0020Dealer\u0020hits\u0020until\u002017\u0020or\u0020more.\u0020Else\u0020dealer\u0020stands.",
             "url": "classes/App-Game-Game.html#method_dealerPlay"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgetResult\u0028\u0029",
             "name": "getResult",
-            "summary": "",
+            "summary": "Get\u0020the\u0020result\u0020of\u0020the\u0020game\u0020in\u0020a\u0020GameState.",
             "url": "classes/App-Game-Game.html#method_getResult"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgetJSONGame\u0028\u0029",
             "name": "getJSONGame",
-            "summary": "",
+            "summary": "Get\u0020the\u0020game\u0020in\u0020a\u0020JSON\u0020format.\u0020It\u0020will\u0020return\u0020the\u0020gamestatemessage,\u0020the\u0020players\u0020hand\u0020and\u0020total\u0020value,\u0020and\u0020the\u0020dealers\u0020hand\u0020an\u0020total\u0020value.",
             "url": "classes/App-Game-Game.html#method_getJSONGame"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003A__toString\u0028\u0029",
             "name": "__toString",
-            "summary": "",
+            "summary": "Get\u0020the\u0020game\u0020in\u0020a\u0020string\u0020format.\u0020It\u0020will\u0020call\u0020the\u0020JSONGame\u0020method.",
             "url": "classes/App-Game-Game.html#method___toString"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003A\u0024player",
             "name": "player",
-            "summary": "",
+            "summary": "Player\u0020instance",
             "url": "classes/App-Game-Game.html#property_player"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003A\u0024dealer",
             "name": "dealer",
-            "summary": "",
+            "summary": "Dealer\u0020instance",
             "url": "classes/App-Game-Game.html#property_dealer"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003A\u0024deck",
             "name": "deck",
-            "summary": "",
+            "summary": "DeckofCards\u0020instance",
             "url": "classes/App-Game-Game.html#property_deck"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003A\u0024state",
             "name": "state",
-            "summary": "",
+            "summary": "Current\u0020game\u0020state\u0020\u002D\u0020default\u0020is\u0020NotStarted.",
             "url": "classes/App-Game-Game.html#property_state"
         },                {
             "fqsen": "\\App\\Game\\GameStates",

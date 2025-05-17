@@ -126,11 +126,12 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Game.php"><a href="files/src-game-game.html"><abbr title="src/Game/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">45</span>
+    <span class="phpdocumentor-element-found-in__line">48</span>
 
     </aside>
 
-        
+            <p class="phpdocumentor-summary">Game instance creates a blackjack game. To start the game, call the startGame method.</p>
+
 
 
 
@@ -164,24 +165,28 @@
     <span>
                         &nbsp;: <a href="classes/App-Game-DealerActions.html"><abbr title="\App\Game\DealerActions">DealerActions</abbr></a>            </span>
 </dt>
+<dd>Dealer instance</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a class="" href="classes/App-Game-Game.html#property_deck">$deck</a>
     <span>
                         &nbsp;: <a href="classes/App-Game-DeckOfCards.html"><abbr title="\App\Game\DeckOfCards">DeckOfCards</abbr></a>            </span>
 </dt>
+<dd>DeckofCards instance</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a class="" href="classes/App-Game-Game.html#property_player">$player</a>
     <span>
                         &nbsp;: <a href="classes/App-Game-PlayerActions.html"><abbr title="\App\Game\PlayerActions">PlayerActions</abbr></a>            </span>
 </dt>
+<dd>Player instance</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a class="" href="classes/App-Game-Game.html#property_state">$state</a>
     <span>
                         &nbsp;: <a href="classes/App-Game-GameStates.html"><abbr title="\App\Game\GameStates">GameStates</abbr></a>            </span>
 </dt>
+<dd>Current game state - default is NotStarted.</dd>
 
     </dl>
 
@@ -196,108 +201,126 @@
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
+<dd>Game constructor. If no arguments are provided, default values will be used.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Game-Game.html#method___toString">__toString()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
+<dd>Get the game in a string format. It will call the JSONGame method.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Game-Game.html#method_dealerPlay">dealerPlay()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
+<dd>Method will let the dealer &quot;play&quot; (draw cards). It will update the gamestate accordingly if the dealer busts or stands. Dealer hits until 17 or more. Else dealer stands.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Game-Game.html#method_getAfterFlopState">getAfterFlopState()</a>
     <span>
                                 &nbsp;: <a href="classes/App-Game-GameStates.html"><abbr title="\App\Game\GameStates">GameStates</abbr></a>    </span>
 </dt>
+<dd>Get GameState after &quot;the flop&quot;, i.e after the startGame method i.e after giving first to cards to each player. It will check for dealer blackjack with the face-down card aswell.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Game-Game.html#method_getAfterGameState">getAfterGameState()</a>
     <span>
                                 &nbsp;: <a href="classes/App-Game-GameStates.html"><abbr title="\App\Game\GameStates">GameStates</abbr></a>    </span>
 </dt>
+<dd>Get GameState after the dealer has played.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Game-Game.html#method_getDealer">getDealer()</a>
     <span>
                                 &nbsp;: <a href="classes/App-Game-DealerActions.html"><abbr title="\App\Game\DealerActions">DealerActions</abbr></a>    </span>
 </dt>
+<dd>Get the dealer instance.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Game-Game.html#method_getDeck">getDeck()</a>
     <span>
                                 &nbsp;: <a href="classes/App-Game-DeckOfCards.html"><abbr title="\App\Game\DeckOfCards">DeckOfCards</abbr></a>    </span>
 </dt>
+<dd>Get the deck instance.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Game-Game.html#method_getGameMessage">getGameMessage()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
+<dd>Get the current game message that corresponds to the current game state.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Game-Game.html#method_getJSONGame">getJSONGame()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
+<dd>Get the game in a JSON format. It will return the gamestatemessage, the players hand and total value, and the dealers hand an total value.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Game-Game.html#method_getPlayer">getPlayer()</a>
     <span>
                                 &nbsp;: <a href="classes/App-Game-PlayerActions.html"><abbr title="\App\Game\PlayerActions">PlayerActions</abbr></a>    </span>
 </dt>
+<dd>Get the player instance.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Game-Game.html#method_getResult">getResult()</a>
     <span>
                                 &nbsp;: <a href="classes/App-Game-GameStates.html"><abbr title="\App\Game\GameStates">GameStates</abbr></a>    </span>
 </dt>
+<dd>Get the result of the game in a GameState.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Game-Game.html#method_getState">getState()</a>
     <span>
                                 &nbsp;: <a href="classes/App-Game-GameStates.html"><abbr title="\App\Game\GameStates">GameStates</abbr></a>    </span>
 </dt>
+<dd>Get the current game state.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Game-Game.html#method_isGameDone">isGameDone()</a>
     <span>
                                 &nbsp;: bool    </span>
 </dt>
+<dd>Check if the game is done.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Game-Game.html#method_playerHit">playerHit()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
+<dd>Method will let the player &quot;hit&quot; (draw a card). It will update the gamestate accordingly if the player busts.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Game-Game.html#method_playerStand">playerStand()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
+<dd>Method will let the player &quot;stand&quot; (not draw a card). It will update the gamestate to dealer turn. And call the dealerplay method.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Game-Game.html#method_revealDealerCard">revealDealerCard()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
+<dd>Method will reveal the dealer&#039;s second card.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Game-Game.html#method_setState">setState()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
+<dd>Set the current game state.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Game-Game.html#method_startGame">startGame()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
+<dd>Start the game. It will shuffle the deck and deal the starting cards (two each and dealer one face down). It will change the game state to PlayerTurn.</dd>
 
     </dl>
 
@@ -329,11 +352,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Game.php"><a href="files/src-game-game.html"><abbr title="src/Game/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">48</span>
+    <span class="phpdocumentor-element-found-in__line">57</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Dealer instance</p>
+
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
@@ -365,11 +389,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Game.php"><a href="files/src-game-game.html"><abbr title="src/Game/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">49</span>
+    <span class="phpdocumentor-element-found-in__line">61</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">DeckofCards instance</p>
+
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
@@ -401,11 +426,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Game.php"><a href="files/src-game-game.html"><abbr title="src/Game/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">47</span>
+    <span class="phpdocumentor-element-found-in__line">53</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Player instance</p>
+
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
@@ -437,11 +463,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Game.php"><a href="files/src-game-game.html"><abbr title="src/Game/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">50</span>
+    <span class="phpdocumentor-element-found-in__line">65</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Current game state - default is NotStarted.</p>
+
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
@@ -478,14 +505,15 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Game.php"><a href="files/src-game-game.html"><abbr title="src/Game/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">52</span>
+    <span class="phpdocumentor-element-found-in__line">74</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Game constructor. If no arguments are provided, default values will be used.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-PlayerActions.html"><abbr title="\App\Game\PlayerActions">PlayerActions</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$player</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-DealerActions.html"><abbr title="\App\Game\DealerActions">DealerActions</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$dealer</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-DeckOfCards.html"><abbr title="\App\Game\DeckOfCards">DeckOfCards</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$deck</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-GameStates.html"><abbr title="\App\Game\GameStates">GameStates</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$gameState</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-PlayerActions.html"><abbr title="\App\Game\PlayerActions">PlayerActions</abbr></a>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$player</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-DealerActions.html"><abbr title="\App\Game\DealerActions">DealerActions</abbr></a>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$dealer</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-DeckOfCards.html"><abbr title="\App\Game\DeckOfCards">DeckOfCards</abbr></a>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$deck</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-GameStates.html"><abbr title="\App\Game\GameStates">GameStates</abbr></a>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$gameState</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -495,31 +523,39 @@
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$player</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-PlayerActions.html"><abbr title="\App\Game\PlayerActions">PlayerActions</abbr></a></span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-PlayerActions.html"><abbr title="\App\Game\PlayerActions">PlayerActions</abbr></a>|null</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>Optional player instance</p>
+</section>
+
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$dealer</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-DealerActions.html"><abbr title="\App\Game\DealerActions">DealerActions</abbr></a></span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-DealerActions.html"><abbr title="\App\Game\DealerActions">DealerActions</abbr></a>|null</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>Optional dealer instance</p>
+</section>
+
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$deck</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-DeckOfCards.html"><abbr title="\App\Game\DeckOfCards">DeckOfCards</abbr></a></span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-DeckOfCards.html"><abbr title="\App\Game\DeckOfCards">DeckOfCards</abbr></a>|null</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>Optional deck instance</p>
+</section>
+
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$gameState</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-GameStates.html"><abbr title="\App\Game\GameStates">GameStates</abbr></a></span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-GameStates.html"><abbr title="\App\Game\GameStates">GameStates</abbr></a>|null</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>Optional initial game state</p>
+</section>
+
             </dd>
             </dl>
 
@@ -543,11 +579,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Game.php"><a href="files/src-game-game.html"><abbr title="src/Game/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">252</span>
+    <span class="phpdocumentor-element-found-in__line">342</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Get the game in a string format. It will call the JSONGame method.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">__toString</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
@@ -581,11 +618,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Game.php"><a href="files/src-game-game.html"><abbr title="src/Game/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">212</span>
+    <span class="phpdocumentor-element-found-in__line">291</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Method will let the dealer &quot;play&quot; (draw cards). It will update the gamestate accordingly if the dealer busts or stands. Dealer hits until 17 or more. Else dealer stands.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">dealerPlay</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
@@ -615,11 +653,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Game.php"><a href="files/src-game-game.html"><abbr title="src/Game/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">142</span>
+    <span class="phpdocumentor-element-found-in__line">201</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Get GameState after &quot;the flop&quot;, i.e after the startGame method i.e after giving first to cards to each player. It will check for dealer blackjack with the face-down card aswell.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">getAfterFlopState</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/App-Game-GameStates.html"><abbr title="\App\Game\GameStates">GameStates</abbr></a></span></code>
@@ -653,11 +692,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Game.php"><a href="files/src-game-game.html"><abbr title="src/Game/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">163</span>
+    <span class="phpdocumentor-element-found-in__line">226</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Get GameState after the dealer has played.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">getAfterGameState</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/App-Game-GameStates.html"><abbr title="\App\Game\GameStates">GameStates</abbr></a></span></code>
@@ -691,11 +731,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Game.php"><a href="files/src-game-game.html"><abbr title="src/Game/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">105</span>
+    <span class="phpdocumentor-element-found-in__line">147</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Get the dealer instance.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">getDealer</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/App-Game-DealerActions.html"><abbr title="\App\Game\DealerActions">DealerActions</abbr></a></span></code>
@@ -729,11 +770,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Game.php"><a href="files/src-game-game.html"><abbr title="src/Game/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">110</span>
+    <span class="phpdocumentor-element-found-in__line">156</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Get the deck instance.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">getDeck</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/App-Game-DeckOfCards.html"><abbr title="\App\Game\DeckOfCards">DeckOfCards</abbr></a></span></code>
@@ -767,11 +809,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Game.php"><a href="files/src-game-game.html"><abbr title="src/Game/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">60</span>
+    <span class="phpdocumentor-element-found-in__line">86</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Get the current game message that corresponds to the current game state.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">getGameMessage</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
@@ -779,7 +822,9 @@
     <div class="phpdocumentor-label-line">
         </div>
     
-    
+        <section class="phpdocumentor-description"><p>.</p>
+</section>
+
     
     
 
@@ -805,11 +850,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Game.php"><a href="files/src-game-game.html"><abbr title="src/Game/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">236</span>
+    <span class="phpdocumentor-element-found-in__line">322</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Get the game in a JSON format. It will return the gamestatemessage, the players hand and total value, and the dealers hand an total value.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">getJSONGame</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
@@ -843,11 +889,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Game.php"><a href="files/src-game-game.html"><abbr title="src/Game/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">100</span>
+    <span class="phpdocumentor-element-found-in__line">138</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Get the player instance.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">getPlayer</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/App-Game-PlayerActions.html"><abbr title="\App\Game\PlayerActions">PlayerActions</abbr></a></span></code>
@@ -881,11 +928,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Game.php"><a href="files/src-game-game.html"><abbr title="src/Game/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">230</span>
+    <span class="phpdocumentor-element-found-in__line">313</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Get the result of the game in a GameState.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">getResult</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/App-Game-GameStates.html"><abbr title="\App\Game\GameStates">GameStates</abbr></a></span></code>
@@ -919,11 +967,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Game.php"><a href="files/src-game-game.html"><abbr title="src/Game/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">95</span>
+    <span class="phpdocumentor-element-found-in__line">129</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Get the current game state.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">getState</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/App-Game-GameStates.html"><abbr title="\App\Game\GameStates">GameStates</abbr></a></span></code>
@@ -957,11 +1006,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Game.php"><a href="files/src-game-game.html"><abbr title="src/Game/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">77</span>
+    <span class="phpdocumentor-element-found-in__line">107</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Check if the game is done.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">isGameDone</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
@@ -995,11 +1045,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Game.php"><a href="files/src-game-game.html"><abbr title="src/Game/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">187</span>
+    <span class="phpdocumentor-element-found-in__line">254</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Method will let the player &quot;hit&quot; (draw a card). It will update the gamestate accordingly if the player busts.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">playerHit</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
@@ -1029,11 +1080,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Game.php"><a href="files/src-game-game.html"><abbr title="src/Game/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">197</span>
+    <span class="phpdocumentor-element-found-in__line">268</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Method will let the player &quot;stand&quot; (not draw a card). It will update the gamestate to dealer turn. And call the dealerplay method.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">playerStand</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
@@ -1063,11 +1115,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Game.php"><a href="files/src-game-game.html"><abbr title="src/Game/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">207</span>
+    <span class="phpdocumentor-element-found-in__line">282</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Method will reveal the dealer&#039;s second card.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">revealDealerCard</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
@@ -1097,11 +1150,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Game.php"><a href="files/src-game-game.html"><abbr title="src/Game/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">115</span>
+    <span class="phpdocumentor-element-found-in__line">166</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Set the current game state.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">setState</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-GameStates.html"><abbr title="\App\Game\GameStates">GameStates</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$state</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
@@ -1141,11 +1195,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Game.php"><a href="files/src-game-game.html"><abbr title="src/Game/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">120</span>
+    <span class="phpdocumentor-element-found-in__line">175</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Start the game. It will shuffle the deck and deal the starting cards (two each and dealer one face down). It will change the game state to PlayerTurn.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">startGame</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
