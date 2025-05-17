@@ -56,7 +56,23 @@
 
 
     <h2 id="kmom04">Kmom04</h2>
-    <p>Redovisningstext...</p>
+    <p><b>Berätta hur du upplevde att skriva kod som testar annan kod med PHPUnit och hur du upplever phpunit rent allmänt.</b></p>
+    <p>Det kändes ganska bra. Det blev lite samma sak som de unittest vi gjorde i objektorienterad python, om jag minns rätt. Jag upplever tester som centralt för en applikation, särskilt om man arbetar i ett team. De testerna jag skrev blev dock ganska simpla, keep it simple stupid. Jag använde inte mock-objekt grejen, vilket jag först såg att man kunde göra efteråt. Får ta och kolla lite på detta framöver. PHPUnit känns ganska simpelt, men jag har inte efterforskat överdrivet mycket ännu utan mest kollat på olika asserts.</p>
+
+    <p><b>Hur väl lyckades du med kodtäckningen av din kod, lyckades du nå mer än 90% kodtäckning?</b></p>
+    <p>Jag lyckades nå 100% kodtäckning av mina applikationsklasser. Notera dock att jag inte skrev kod under src/Card eller för mina controllers. Jag hade nämneligen gjort all kod för mitt spel i game, och det kändes lite dumt att göra om allt tester igen bara för att det finns en card klass i src/game och en i src/card. Att använda PHPUNIT och att i docs kunna se exakt hur ens coverage ser ut gjorde det väldigt enkelt. Man kunde direkt se vilka saker som inte testats. Däremot kanske detta gjorde att man glömde något speciellt edge-case för att man inte behövde tänka så mycket utan kunde se vad som var rött och vad som var grönt så att säga.</p>
+
+    <p><b>Upplever du din egen kod som “testbar kod” eller finns det delar i koden som är mer eller mindre testbar och finns det saker som kan göras för att förbättra kodens testbarhet?</b></p>
+    <p>Min kod kändes väldigt testbar. Det enda problemet jag stötte på var att jag i min constructur för game startade spelet, vilket i sin tur shufflade korten. Därmed kunde jag inte skicka in kort till olika spelare på ett smidigt sätt. Det slutade med att jag istället inte callade metoden i constructorn och ändrade om flödet i programmet till att man behöver faktiskt calla startGame() för att få igång allting. Utöver detta insåg jag att jag sannolikt borde tänkt igenom mina klass metoder och liknande lite mer, sannolikt hade min game klass kunnat blivit refactorad väldigt mycket.</p>
+
+    <p><b>Valde du att skriva om delar av din kod för att förbättra den eller göra den mer testbar, om så berätta lite hur du tänkte.</b></p>
+    <p>Jag skrev om lite saker. Bland annat i att startGame inte skickas in i constructorn utan måste köras själv. Detta står i linje med SINGLE RESPONSIBILITY regeln. Utöver detta kan jag ha gjort mindre ändringar men inga större refactoriseringar.</p>
+
+    <p><b>Fundera över om du anser att testbar kod är något som kan identifiera “snygg och ren kod”.</b></p>
+    <p>Jag tycker inte testbar kod i regel innebär snygg och ren kod. Men snygg och ren kod innebär oftast testbar kod eftersom det är enklare att testa kod som faktiskt går att förstå. Om man skriver komplicerad och oförståbar kod kommer man inte kunna tänka ut alla möjliga fall. Exempelvis har jag försökt att använda errors en del för att visualisera i koden vad vissa edgecases innebär, detta är något jag tycker i regel är snygg kod. Utöver detta menar jag att snygg kod är sådan kod som är uppdelad och inte överväldigande.</p>
+
+    <p><b>Vilken är din TIL för detta kmom?</b></p>
+    <p>TIL för detta kmom blir hur man kan använda PHPUNIT för att unittesta kod. Utöver detta har jag fått lära mig mer om PHPDocs och fixa en del linting problem med PHPSTAN och PHPMD.</p>
 
     <h2 id="kmom04">Kmom05</h2>
     <p>Redovisningstext...</p>
