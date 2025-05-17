@@ -17,7 +17,7 @@ enum GameStates
     // AFTER FLOP - Endast "blackjack" om man får de genom två första korten.
     case PlayerBlackjack; // Player got blackjack
     case DealerBlackjack; // Dealer got blackjack
-    case BlackJackPush;   // Both has blackjack.
+    case BlackjackPush;   // Both has blackjack.
 
     // EFTER SPEL - Efter att spelare och dealer har "standat".
     case Push;            // Game is push.
@@ -39,7 +39,7 @@ enum GameMessages: string
     case DealerWin = "Resultat: Dealern vann med högre värde!";
     case PlayerBlackjack = "Resultat: Spelare vann, har blackjack!";
     case DealerBlackjack = "Resultat: Dealern vann, har blackjack!";
-    case BlackJackPush = "Resultat: Lika. Båda har blackjack!";
+    case BlackjackPush = "Resultat: Lika. Båda har blackjack!";
 }
 
 class Game
@@ -55,8 +55,6 @@ class Game
         $this->dealer = $dealer ?? new DealerActions();
         $this->deck = $deck ?? new DeckOfCards();
         $this->state = $gameState ?? GameStates::NotStarted;
-
-        $this->startGame();
     }
 
     public function getGameMessage(): string
@@ -72,7 +70,7 @@ class Game
             GameStates::DealerWin => GameMessages::DealerWin->value,
             GameStates::PlayerBlackjack => GameMessages::PlayerBlackjack->value,
             GameStates::DealerBlackjack => GameMessages::DealerBlackjack->value,
-            GameStates::BlackJackPush => GameMessages::BlackJackPush->value,
+            GameStates::BlackjackPush => GameMessages::BlackjackPush->value,
         };
     }
 
@@ -83,7 +81,7 @@ class Game
         $doneStates = [
          GameStates::PlayerBlackjack,
          GameStates::DealerBlackjack,
-         GameStates::BlackJackPush,
+         GameStates::BlackjackPush,
          GameStates::Push,
          GameStates::PlayerBusted,
          GameStates::DealerBusted,
@@ -124,18 +122,19 @@ class Game
         if ($this->getState() == GameStates::NotStarted) {
             $this->deck->shuffle();
 
-            // Ge ut första kortet till spelaren och dealern.
+            // Försa kortet ut.
             $this->player->play(PlayerAction::HIT, $this->deck->drawCard());
             $this->dealer->play(PlayerAction::HIT, $this->deck->drawCard());
 
             // Andra kortet ut.
             $this->player->play(PlayerAction::HIT, $this->deck->drawCard());
-            $this->dealer->play(PlayerAction::HIT, $this->deck->drawCard());
 
-            // Göm dealerns andra kort.
-            $this->dealer->getHand()->getCards()[1]->setFaceDown(true);
+            // Andra kortet för dealern och göm.
+            $dealerSecondCard = $this->deck->drawCard();
+            $dealerSecondCard ? $dealerSecondCard->setFaceDown(true) : null;
+            $this->dealer->play(PlayerAction::HIT, $dealerSecondCard);
 
-            // Sätt gamestate till vad som har hänt efter floppen.
+            // Set game state based on initial cards
             $this->setState($this->getAfterFlopState());
         }
     }
@@ -147,7 +146,7 @@ class Game
             // Har båda blackjack??
             if ($this->dealer->getHand()->hasBlackJack()) {
                 $this->revealDealerCard();
-                return GameStates::BlackJackPush;
+                return GameStates::BlackjackPush;
             }
             $this->revealDealerCard();
             return GameStates::PlayerBlackjack;
@@ -164,6 +163,9 @@ class Game
     public function getAfterGameState(): GameStates
     {
         // Denna kan inte bli player-bust. Detta hade skett när spelaren tog ett kort.
+        if ($this->player->isBusted()) {
+            return GameStates::PlayerBusted;
+        }
 
         // Kolla om dealer har bustat
         if ($this->dealer->isBusted()) {
@@ -171,11 +173,6 @@ class Game
         }
 
         // Kolla om push
-        if ($this->player->getHand()->getTotalValue() == $this->dealer->getHand()->getTotalValue()) {
-            return GameStates::Push;
-        }
-
-        // Kolla om det blivit push (lika)
         if ($this->player->getHand()->getTotalValue() == $this->dealer->getHand()->getTotalValue()) {
             return GameStates::Push;
         }

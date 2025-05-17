@@ -69,9 +69,7 @@ class CardGraphic extends Card
             ],
         ];
 
-        $suit = $this->getSuit();
-        $value = $this->getValue();
 
-        return $this->isFaceDown() ? "\u{1F0A0}" : $unicodeMap[$suit][$value];
+        return $this->isFaceDown() ? "\u{1F0A0}" : $unicodeMap[$this->suit][$this->value];
     }
 }

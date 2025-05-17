@@ -109,8 +109,8 @@ class Card
     public function getCard(): array
     {
         return [
-            'value' => $this->value,
-            'suit' => $this->suit,
+            'value' => $this->getValue(),
+            'suit' => $this->getSuit(),
             'isFaceDown' => $this->isFaceDown
         ];
     }
