@@ -31,7 +31,7 @@ class GameController extends AbstractController
     public function gameStart(SessionInterface $session): Response
     {
         $game = $this->getGameAndSave($session);
-
+        $game->startGame();
 
         $data = [
             'player' => $game->getPlayer()->getHand(),
