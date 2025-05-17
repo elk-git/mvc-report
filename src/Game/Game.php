@@ -42,13 +42,35 @@ enum GameMessages: string
     case BlackjackPush = "Resultat: Lika. Båda har blackjack!";
 }
 
+/**
+ * Game instance creates a blackjack game. To start the game, call the startGame method.
+ */
 class Game
 {
+    /**
+     * Player instance
+     */
     private PlayerActions $player;
+    /**
+     * Dealer instance
+     */
     private DealerActions $dealer;
+    /**
+     * DeckofCards instance
+     */
     private DeckOfCards $deck;
+    /**
+     * Current game state - default is NotStarted.
+     */
     private GameStates $state = GameStates::NotStarted;
 
+    /**
+     * Game constructor. If no arguments are provided, default values will be used.
+     * @param PlayerActions|null $player Optional player instance
+     * @param DealerActions|null $dealer Optional dealer instance
+     * @param DeckOfCards|null $deck Optional deck instance
+     * @param GameStates|null $gameState Optional initial game state
+     */
     public function __construct(PlayerActions $player = null, DealerActions $dealer = null, DeckOfCards $deck = null, GameStates $gameState = null)
     {
         $this->player = $player ?? new PlayerActions();
@@ -57,6 +79,10 @@ class Game
         $this->state = $gameState ?? GameStates::NotStarted;
     }
 
+    /**
+     * Get the current game message that corresponds to the current game state..
+     * @return string
+     */
     public function getGameMessage(): string
     {
         return match($this->getState()) {
@@ -74,6 +100,10 @@ class Game
         };
     }
 
+    /**
+     * Check if the game is done.
+     * @return bool
+     */
     public function isGameDone(): bool
     {
         $state = $this->getState();
@@ -92,31 +122,56 @@ class Game
         return in_array($state, $doneStates);
     }
 
+    /**
+     * Get the current game state.
+     * @return GameStates
+     */
     public function getState(): GameStates
     {
         return $this->state;
     }
 
+    /**
+     * Get the player instance.
+     * @return PlayerActions
+     */
     public function getPlayer(): PlayerActions
     {
         return $this->player;
     }
 
+    /**
+     * Get the dealer instance.
+     * @return DealerActions
+     */
     public function getDealer(): DealerActions
     {
         return $this->dealer;
     }
 
+    /**
+     * Get the deck instance.
+     * @return DeckOfCards
+     */
     public function getDeck(): DeckOfCards
     {
         return $this->deck;
     }
 
+    /**
+     * Set the current game state.
+     * @param GameStates $state
+     * @return void
+     */
     public function setState(GameStates $state): void
     {
         $this->state = $state;
     }
 
+    /**
+     * Start the game. It will shuffle the deck and deal the starting cards (two each and dealer one face down). It will change the game state to PlayerTurn.
+     * @return void
+     */
     public function startGame(): void
     {
         if ($this->getState() == GameStates::NotStarted) {
@@ -139,6 +194,10 @@ class Game
         }
     }
 
+    /**
+     * Get GameState after "the flop", i.e after the startGame method i.e after giving first to cards to each player. It will check for dealer blackjack with the face-down card aswell.
+     * @return GameStates
+     */
     public function getAfterFlopState(): GameStates
     {
         // Kolla om spelare har blackjack
@@ -160,6 +219,10 @@ class Game
         return GameStates::PlayerTurn;
     }
 
+    /**
+     * Get GameState after the dealer has played.
+     * @return GameStates
+     */
     public function getAfterGameState(): GameStates
     {
         // Denna kan inte bli player-bust. Detta hade skett när spelaren tog ett kort.
@@ -184,6 +247,10 @@ class Game
         return GameStates::DealerWin;
     }
 
+    /**
+     * Method will let the player "hit" (draw a card). It will update the gamestate accordingly if the player busts.
+     * @return void
+     */
     public function playerHit(): void
     {
         if ($this->getState() == GameStates::PlayerTurn) {
@@ -194,6 +261,10 @@ class Game
         }
     }
 
+    /**
+     * Method will let the player "stand" (not draw a card). It will update the gamestate to dealer turn. And call the dealerplay method.
+     * @return void
+     */
     public function playerStand(): void
     {
         if ($this->getState() == GameStates::PlayerTurn) {
@@ -204,11 +275,19 @@ class Game
         }
     }
 
+    /**
+     * Method will reveal the dealer's second card.
+     * @return void
+     */
     public function revealDealerCard(): void
     {
         $this->dealer->getHand()->getCards()[1]->setFaceDown(false);
     }
 
+    /**
+     * Method will let the dealer "play" (draw cards). It will update the gamestate accordingly if the dealer busts or stands. Dealer hits until 17 or more. Else dealer stands.
+     * @return void
+     */
     public function dealerPlay(): void
     {
         if ($this->getState() == GameStates::DealerTurn) {
@@ -227,12 +306,19 @@ class Game
         }
     }
 
+    /**
+     * Get the result of the game in a GameState.
+     * @return GameStates
+     */
     public function getResult(): GameStates
     {
         return $this->state;
     }
 
-
+    /**
+     * Get the game in a JSON format. It will return the gamestatemessage, the players hand and total value, and the dealers hand an total value.
+     * @return string
+     */
     public function getJSONGame(): string
     {
         $data = [
@@ -249,6 +335,10 @@ class Game
         return json_encode($data, JSON_THROW_ON_ERROR);
     }
 
+    /**
+     * Get the game in a string format. It will call the JSONGame method.
+     * @return string
+     */
     public function __toString(): string
     {
         return $this->getJSONGame();
