@@ -716,10 +716,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Game-GameStates.html#enumcase_DealerBlackjack"
         },                {
-            "fqsen": "\\App\\Game\\GameStates\u003A\u003ABlackJackPush",
-            "name": "BlackJackPush",
+            "fqsen": "\\App\\Game\\GameStates\u003A\u003ABlackjackPush",
+            "name": "BlackjackPush",
             "summary": "",
-            "url": "classes/App-Game-GameStates.html#enumcase_BlackJackPush"
+            "url": "classes/App-Game-GameStates.html#enumcase_BlackjackPush"
         },                {
             "fqsen": "\\App\\Game\\GameStates\u003A\u003APush",
             "name": "Push",
@@ -801,10 +801,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Game-GameMessages.html#enumcase_DealerBlackjack"
         },                {
-            "fqsen": "\\App\\Game\\GameMessages\u003A\u003ABlackJackPush",
-            "name": "BlackJackPush",
+            "fqsen": "\\App\\Game\\GameMessages\u003A\u003ABlackjackPush",
+            "name": "BlackjackPush",
             "summary": "",
-            "url": "classes/App-Game-GameMessages.html#enumcase_BlackJackPush"
+            "url": "classes/App-Game-GameMessages.html#enumcase_BlackjackPush"
         },                {
             "fqsen": "\\App\\Game\\Player",
             "name": "Player",
