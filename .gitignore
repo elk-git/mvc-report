@@ -38,3 +38,4 @@ yarn-error.log
 .php-cs-fixer.cache
 .phpdoc/
 /tools/phpdoc/
+.phpunit.cache/
