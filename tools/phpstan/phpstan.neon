@@ -6,3 +6,7 @@ parameters:
         - ../../tests
     bootstrapFiles:
         #- .phpstan.constants.php
+    excludePaths:
+        - migrations/*
+    ignoreErrors:
+        - '#Property App\\Entity\\Library::\$id \(int\|null\) is never assigned int so it can be removed from the property type\.#'
