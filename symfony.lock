@@ -46,7 +46,7 @@
         "files": [
             ".env.test",
             "phpunit.xml.dist",
-            "tests/bootstrap.php"
+            "tests/config.php"
         ]
     },
     "symfony/asset-mapper": {
@@ -201,7 +201,7 @@
             ".env.test",
             "bin/phpunit",
             "phpunit.xml.dist",
-            "tests/bootstrap.php"
+            "tests/config.php"
         ]
     },
     "symfony/routing": {
