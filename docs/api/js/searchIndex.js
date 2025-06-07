@@ -306,6 +306,21 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-IndexController.html#method_index"
         },                {
+            "fqsen": "\\App\\Controller\\LibraryApiController",
+            "name": "LibraryApiController",
+            "summary": "",
+            "url": "classes/App-Controller-LibraryApiController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryApiController\u003A\u003AapiLibraryBooks\u0028\u0029",
+            "name": "apiLibraryBooks",
+            "summary": "API",
+            "url": "classes/App-Controller-LibraryApiController.html#method_apiLibraryBooks"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryApiController\u003A\u003AapiLibraryShow\u0028\u0029",
+            "name": "apiLibraryShow",
+            "summary": "",
+            "url": "classes/App-Controller-LibraryApiController.html#method_apiLibraryShow"
+        },                {
             "fqsen": "\\App\\Controller\\LibraryController",
             "name": "LibraryController",
             "summary": "",
