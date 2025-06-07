@@ -7,14 +7,14 @@
         <div class="book">
             <h2>{{ book.title }}</h2>
             <p><strong>Författare:</strong> {{ book.author }}</p>
-            <p><strong>ISBN:</strong> {{ book.ISBN }}</p>
+            <p><strong>ISBN:</strong> {{ book.isbn }}</p>
             {% if book.img %}
                 <img src="{{ book.img }}" alt="bok" class="bok" style="width: 200px; height: 300px;">
             {% endif %}
         </div>
         <div style="display: flex; flex-direction: column; gap: 4px;">
-        <a href="{{ path('library_form_edit', {'isbn': book.ISBN}) }}">Redigera bok</a>
-        <a href="{{ path('library_form_delete', {'isbn': book.ISBN}) }}">Ta bort bok</a>
+        <a href="{{ path('library_form_edit', {'isbn': book.isbn}) }}">Redigera bok</a>
+        <a href="{{ path('library_form_delete', {'isbn': book.isbn}) }}">Ta bort bok</a>
         </div>
     {% else %}
         <p>No book found with the provided ISBN.</p>

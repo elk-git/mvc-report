@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1749325004">
-  <project timestamp="1749325004" name="Clover Coverage">
+<coverage generated="1749325714">
+  <project timestamp="1749325714" name="Clover Coverage">
     <package name="App\Card">
       <file name="/home/elk/code/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
         <class name="App\Card\Card" namespace="App\Card">
