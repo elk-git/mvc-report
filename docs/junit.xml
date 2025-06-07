@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="/home/elk/code/dbwebb-kurser/mvc/me/report/phpunit.xml" tests="53" assertions="100" errors="0" failures="0" skipped="0" time="0.111134">
+    <testsuite name="all" tests="53" assertions="100" errors="0" failures="0" skipped="0" time="0.111134">
+      <testsuite name="App\Game\CardGraphicTest" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/CardGraphicTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.022459">
+        <testcase name="testCardGraphicGetUnicodeCardIsFaceDown" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/CardGraphicTest.php" line="17" class="App\Game\CardGraphicTest" classname="App.Game.CardGraphicTest" assertions="1" time="0.022459"/>
+      </testsuite>
+      <testsuite name="App\Game\CardHandTest" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/CardHandTest.php" tests="10" assertions="21" errors="0" failures="0" skipped="0" time="0.013223">
+        <testcase name="testCardHandNoArgsIsEmptyArray" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/CardHandTest.php" line="9" class="App\Game\CardHandTest" classname="App.Game.CardHandTest" assertions="1" time="0.001426"/>
+        <testcase name="testCardHandAddCard" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/CardHandTest.php" line="15" class="App\Game\CardHandTest" classname="App.Game.CardHandTest" assertions="2" time="0.001397"/>
+        <testcase name="testCardHandGetTotalValue" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/CardHandTest.php" line="24" class="App\Game\CardHandTest" classname="App.Game.CardHandTest" assertions="2" time="0.001108"/>
+        <testcase name="testCardHandAceIs11" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/CardHandTest.php" line="36" class="App\Game\CardHandTest" classname="App.Game.CardHandTest" assertions="1" time="0.001203"/>
+        <testcase name="testCardHandTotalValueWithoutFaceDownCards" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/CardHandTest.php" line="44" class="App\Game\CardHandTest" classname="App.Game.CardHandTest" assertions="2" time="0.001128"/>
+        <testcase name="testCardHandGetTotalValueWithFaceDownCards" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/CardHandTest.php" line="55" class="App\Game\CardHandTest" classname="App.Game.CardHandTest" assertions="4" time="0.001146"/>
+        <testcase name="testCardHandAceIs1" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/CardHandTest.php" line="72" class="App\Game\CardHandTest" classname="App.Game.CardHandTest" assertions="1" time="0.001088"/>
+        <testcase name="testCardHandTotalValueAces" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/CardHandTest.php" line="82" class="App\Game\CardHandTest" classname="App.Game.CardHandTest" assertions="4" time="0.001165"/>
+        <testcase name="testCardHandHasBlackJack" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/CardHandTest.php" line="102" class="App\Game\CardHandTest" classname="App.Game.CardHandTest" assertions="3" time="0.001564"/>
+        <testcase name="testCardHandGetJSONCards" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/CardHandTest.php" line="118" class="App\Game\CardHandTest" classname="App.Game.CardHandTest" assertions="1" time="0.001998"/>
+      </testsuite>
+      <testsuite name="App\Game\CardTest" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/CardTest.php" tests="10" assertions="21" errors="0" failures="0" skipped="0" time="0.012438">
+        <testcase name="testCardInvalidSuit" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/CardTest.php" line="12" class="App\Game\CardTest" classname="App.Game.CardTest" assertions="1" time="0.002277"/>
+        <testcase name="testCardInvalidValue" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/CardTest.php" line="18" class="App\Game\CardTest" classname="App.Game.CardTest" assertions="1" time="0.001325"/>
+        <testcase name="testCardValid" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/CardTest.php" line="24" class="App\Game\CardTest" classname="App.Game.CardTest" assertions="3" time="0.001204"/>
+        <testcase name="testCardIsFaceDown" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/CardTest.php" line="32" class="App\Game\CardTest" classname="App.Game.CardTest" assertions="2" time="0.001080"/>
+        <testcase name="testCardGetSuits" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/CardTest.php" line="40" class="App\Game\CardTest" classname="App.Game.CardTest" assertions="5" time="0.001220"/>
+        <testcase name="testCardGetValues" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/CardTest.php" line="51" class="App\Game\CardTest" classname="App.Game.CardTest" assertions="3" time="0.001086"/>
+        <testcase name="testCardGetCard" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/CardTest.php" line="60" class="App\Game\CardTest" classname="App.Game.CardTest" assertions="3" time="0.001087"/>
+        <testcase name="testCardSuits" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/CardTest.php" line="68" class="App\Game\CardTest" classname="App.Game.CardTest" assertions="1" time="0.001046"/>
+        <testcase name="testCardValues" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/CardTest.php" line="75" class="App\Game\CardTest" classname="App.Game.CardTest" assertions="1" time="0.001051"/>
+        <testcase name="testGetSuitFaceDown" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/CardTest.php" line="82" class="App\Game\CardTest" classname="App.Game.CardTest" assertions="1" time="0.001063"/>
+      </testsuite>
+      <testsuite name="App\Game\DealerActionsTest" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/DealerActionsTest.php" tests="3" assertions="3" errors="0" failures="0" skipped="0" time="0.004450">
+        <testcase name="testDealerActions" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/DealerActionsTest.php" line="11" class="App\Game\DealerActionsTest" classname="App.Game.DealerActionsTest" assertions="1" time="0.001593"/>
+        <testcase name="testDealerActionsPlayStand" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/DealerActionsTest.php" line="17" class="App\Game\DealerActionsTest" classname="App.Game.DealerActionsTest" assertions="1" time="0.001638"/>
+        <testcase name="testDealerActionsPlayHit" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/DealerActionsTest.php" line="30" class="App\Game\DealerActionsTest" classname="App.Game.DealerActionsTest" assertions="1" time="0.001220"/>
+      </testsuite>
+      <testsuite name="App\Game\DeckOfCardsTest" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/DeckOfCardsTest.php" tests="13" assertions="23" errors="0" failures="0" skipped="0" time="0.033563">
+        <testcase name="testDeckOfCards" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/DeckOfCardsTest.php" line="13" class="App\Game\DeckOfCardsTest" classname="App.Game.DeckOfCardsTest" assertions="1" time="0.001238"/>
+        <testcase name="testDeckOfCardsEquals52Cards" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/DeckOfCardsTest.php" line="19" class="App\Game\DeckOfCardsTest" classname="App.Game.DeckOfCardsTest" assertions="3" time="0.001389"/>
+        <testcase name="testDeckOfCardsWithArgs2Cards" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/DeckOfCardsTest.php" line="27" class="App\Game\DeckOfCardsTest" classname="App.Game.DeckOfCardsTest" assertions="3" time="0.001111"/>
+        <testcase name="testDeckOfCardsDrawCard" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/DeckOfCardsTest.php" line="36" class="App\Game\DeckOfCardsTest" classname="App.Game.DeckOfCardsTest" assertions="2" time="0.001312"/>
+        <testcase name="testDeckOfCardsEmpty" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/DeckOfCardsTest.php" line="44" class="App\Game\DeckOfCardsTest" classname="App.Game.DeckOfCardsTest" assertions="5" time="0.001195"/>
+        <testcase name="testDeckOfCardsShuffle" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/DeckOfCardsTest.php" line="54" class="App\Game\DeckOfCardsTest" classname="App.Game.DeckOfCardsTest" assertions="1" time="0.006073"/>
+        <testcase name="testDeckOfCardsShuffleWhen1Card" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/DeckOfCardsTest.php" line="62" class="App\Game\DeckOfCardsTest" classname="App.Game.DeckOfCardsTest" assertions="1" time="0.001136"/>
+        <testcase name="testDeckOfCardsShuffleWhenEmpty" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/DeckOfCardsTest.php" line="70" class="App\Game\DeckOfCardsTest" classname="App.Game.DeckOfCardsTest" assertions="1" time="0.001147"/>
+        <testcase name="testDeckOfCardsSort" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/DeckOfCardsTest.php" line="77" class="App\Game\DeckOfCardsTest" classname="App.Game.DeckOfCardsTest" assertions="2" time="0.012859"/>
+        <testcase name="testDeckOfCardsSortNothing" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/DeckOfCardsTest.php" line="90" class="App\Game\DeckOfCardsTest" classname="App.Game.DeckOfCardsTest" assertions="1" time="0.001422"/>
+        <testcase name="testDeckOfCardsGetJSONDeck" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/DeckOfCardsTest.php" line="97" class="App\Game\DeckOfCardsTest" classname="App.Game.DeckOfCardsTest" assertions="1" time="0.001895"/>
+        <testcase name="testDeckOfCardsGetJSONDeckNoCards" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/DeckOfCardsTest.php" line="104" class="App\Game\DeckOfCardsTest" classname="App.Game.DeckOfCardsTest" assertions="1" time="0.001296"/>
+        <testcase name="testDeckOfCardsToString" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/DeckOfCardsTest.php" line="111" class="App\Game\DeckOfCardsTest" classname="App.Game.DeckOfCardsTest" assertions="1" time="0.001491"/>
+      </testsuite>
+      <testsuite name="App\Game\GameTest" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/GameTest.php" tests="16" assertions="31" errors="0" failures="0" skipped="0" time="0.025001">
+        <testcase name="testGame" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/GameTest.php" line="17" class="App\Game\GameTest" classname="App.Game.GameTest" assertions="1" time="0.002027"/>
+        <testcase name="testGameStartGame" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/GameTest.php" line="23" class="App\Game\GameTest" classname="App.Game.GameTest" assertions="6" time="0.001770"/>
+        <testcase name="testGameIsDoneFalse" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/GameTest.php" line="40" class="App\Game\GameTest" classname="App.Game.GameTest" assertions="1" time="0.001405"/>
+        <testcase name="testGameIsDoneTrue" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/GameTest.php" line="51" class="App\Game\GameTest" classname="App.Game.GameTest" assertions="1" time="0.001689"/>
+        <testcase name="testGameGetState" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/GameTest.php" line="59" class="App\Game\GameTest" classname="App.Game.GameTest" assertions="1" time="0.001469"/>
+        <testcase name="testGetGameMessage" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/GameTest.php" line="67" class="App\Game\GameTest" classname="App.Game.GameTest" assertions="11" time="0.001472"/>
+        <testcase name="testGameAfterFlopStateBlackjackPush" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/GameTest.php" line="107" class="App\Game\GameTest" classname="App.Game.GameTest" assertions="1" time="0.001466"/>
+        <testcase name="testGameAfterFlopStateDealerBlackjack" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/GameTest.php" line="120" class="App\Game\GameTest" classname="App.Game.GameTest" assertions="1" time="0.001499"/>
+        <testcase name="testGameAfterFlopStatePlayerBlackjack" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/GameTest.php" line="134" class="App\Game\GameTest" classname="App.Game.GameTest" assertions="1" time="0.001598"/>
+        <testcase name="testGameAfterGameStatePlayerBusted" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/GameTest.php" line="148" class="App\Game\GameTest" classname="App.Game.GameTest" assertions="1" time="0.001548"/>
+        <testcase name="testGameAfterGameStateDealerBusted" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/GameTest.php" line="162" class="App\Game\GameTest" classname="App.Game.GameTest" assertions="1" time="0.001557"/>
+        <testcase name="testGameAfterGameStatePush" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/GameTest.php" line="176" class="App\Game\GameTest" classname="App.Game.GameTest" assertions="1" time="0.001592"/>
+        <testcase name="testGameAfterGameStatePlayerWin" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/GameTest.php" line="190" class="App\Game\GameTest" classname="App.Game.GameTest" assertions="1" time="0.001550"/>
+        <testcase name="testGameAfterGameStateDealerWin" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/GameTest.php" line="204" class="App\Game\GameTest" classname="App.Game.GameTest" assertions="1" time="0.001488"/>
+        <testcase name="testGameToString" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/GameTest.php" line="218" class="App\Game\GameTest" classname="App.Game.GameTest" assertions="1" time="0.001537"/>
+        <testcase name="testGameResult" file="/home/elk/code/dbwebb-kurser/mvc/me/report/tests/Game/GameTest.php" line="225" class="App\Game\GameTest" classname="App.Game.GameTest" assertions="1" time="0.001334"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>
