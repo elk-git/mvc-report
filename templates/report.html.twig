@@ -76,4 +76,20 @@
 
     <h2 id="kmom04">Kmom05</h2>
     <p>Redovisningstext...</p>
+
+    <p><b>Gick det bra att jobba igenom övningen med Symfony och Doctrine. Något särskilt du tänkte/reagerade på under övningen?</b></p>
+    <p>Det gick bra att komma igån med Symfony och Doctrine. Särskilt eftersom mitt databasval blev sqlite. Det var enkelt att komma igång och det var enkelt att få till CRUD med Symfony forms och gets och posts routes. Doctrine var ganska simpelt, särskilt i och med övningen innan.</p>
+
+    <p><b>Berätta om din applikation och hur du tänkte när du byggde upp den. Tänkte du något speciellt på användargränssnittet?</b></p>
+    <p>Jag gjorde det på det enklaste sättet, men det är också det sättet som känns normalast rent UX mässigt. Man kommer till landningssidan där kan man välja att se alla böcker eller skapa en bok. Om man klickar på skapa en bok får man upp ett formulär där man måste skriva in alla rader. Om man då skapar boken redicerats man till sidan där alla böcker finns i tablet. På denna sida (som går att nå via landningssidan) kan man se alla böcker i ett table och även en link till att skapa en till bok, som på landningssidan. Här kan man hovra med musen över en tr i tablet. Det blir en mouse hover effect och om man klickar kommer man till en read 1 view. Här kan man se mer data (bilden och isbn), härifrån kan man sedan välja att radera eller editta eller gå tillbaka. Om man klickar på radera kommer ett formulär för är du säker.. om man klickar edit får man upp ett formulär där man kan ändra allt förutom ISBN, vilket kändes som en reell lösning. Härifrån kan man sedan klicka uppdatera. Detta är mitt flöde. Om man vill ändra ISBN får man alltså radera och skapa en ny bok.</p>
+
+    <p><b>Gick det bra att jobba med ORM i CRUD eller vad anser du om det, jämför gärna med andra sätt att jobba med databaser?</b></p>
+    <p>Det är enkelt att komma igång med crud i ORM. Jag har använt ORM förut i något sammanhang. Det blir enkelt och man behöver inte skriva så mycket boilerplate vilket jag tycker är en stor fördel. Som jag förstår det är dock en nackdel att man kanske inte lika enkelt kan göra komplicerade queries, men i övningen tyckte jag det såg ganska simpelt ut att göra egna SQL-queries i funktioner, något jag dock inte behövde här. Att jobba med RÅ-sql blir därför inte i realiteten ett bättre alternativ, särskilt när man kör CRUD, vilket endast kräver enkla queries där ORM gör det enkelt. </p>
+
+    <p><b>Vad är din uppfattning om ORM så här långt och relatera gärna till andra sätt att jobba med applikationskod mot databaser?</b></p>
+    <p>ORM är en bra mellanväg mellan typ stored procedures och rå-sql kod som jag fattar det. Stored procedures är ju bra för komplicerade saker, men då hamnar applikationskoden i SQL. ORM gör det som jag förstår det väldigt simpelt att använda sql för enkla och lätta transaktioner. Min uppfattning är att ORM oftast är det bästa när man inte behöver 'galen' sql kod.</p>
+
+    <p><b>Vilken är din TIL för detta kmom?</b></p>
+    <p>TIL för detta kmom blir doctrine och ORM i syfmony. Utöver detta fick jag uppdatera mig på SQLite och hur man använder CRUD i symfony.</p>
+
 {% endblock %}
