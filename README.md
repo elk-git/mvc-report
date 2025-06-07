@@ -6,10 +6,15 @@ author: elk
 
 ![Github repo image](https://i.redd.it/k9g5xxe3bcl21.jpg)
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/elk-git/mvc-report/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/elk-git/mvc-report/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/elk-git/mvc-report/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/elk-git/mvc-report/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/elk-git/mvc-report/badges/build.png?b=master)](https://scrutinizer-ci.com/g/elk-git/mvc-report/build-status/master)
+
 MVC Report
 ====================
 
 Här nedan följer en manual för min report sida.
+
 
 
 
