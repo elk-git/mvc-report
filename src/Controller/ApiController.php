@@ -61,7 +61,7 @@ class ApiController extends AbstractController
                     'request' => 'GET',
                     'url' => '/api/library/show/{isbn}',
                     'description' => 'Hämtar en specifik bok med ISBN. Exemplet skickar dig till ett exmpel-ISBN.',
-                    'redirect' => '/api/library/show/9789139030201',
+                    'redirect' => 'api_library_show_example',
                 ]
             ],
         ];

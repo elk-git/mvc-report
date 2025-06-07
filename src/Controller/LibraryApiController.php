@@ -31,4 +31,10 @@ final class LibraryApiController extends AbstractController
         }
         return $this->json($book);
     }
+
+    #[Route('/api/library/example', name: 'api_library_show_example', methods: ['GET'])]
+    public function apiLibraryShowExample(
+    ): Response {
+        return $this->redirectToRoute('/api/library/show', ['isbn' => '9789139030201']);
+    }
 }
