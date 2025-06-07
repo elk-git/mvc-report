@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1749321607">
-  <project timestamp="1749321607">
+<coverage generated="1749325004">
+  <project timestamp="1749325004" name="Clover Coverage">
     <package name="App\Card">
       <file name="/home/elk/code/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
         <class name="App\Card\Card" namespace="App\Card">
@@ -947,14 +947,14 @@
         <line num="92" type="stmt" count="15"/>
         <line num="94" type="stmt" count="15"/>
         <line num="95" type="stmt" count="15"/>
-        <line num="96" type="stmt" count="6"/>
-        <line num="97" type="stmt" count="6"/>
+        <line num="96" type="stmt" count="5"/>
+        <line num="97" type="stmt" count="5"/>
         <line num="99" type="stmt" count="15"/>
         <line num="103" type="stmt" count="15"/>
-        <line num="104" type="stmt" count="6"/>
-        <line num="105" type="stmt" count="6"/>
-        <line num="106" type="stmt" count="6"/>
-        <line num="107" type="stmt" count="6"/>
+        <line num="104" type="stmt" count="5"/>
+        <line num="105" type="stmt" count="5"/>
+        <line num="106" type="stmt" count="5"/>
+        <line num="107" type="stmt" count="5"/>
         <line num="109" type="stmt" count="2"/>
         <line num="112" type="stmt" count="15"/>
         <line num="116" type="method" name="hasBlackJack" visibility="public" complexity="2" crap="2" count="14"/>
