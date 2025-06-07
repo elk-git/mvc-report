@@ -321,6 +321,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-LibraryApiController.html#method_apiLibraryShow"
         },                {
+            "fqsen": "\\App\\Controller\\LibraryApiController\u003A\u003AapiLibraryShowExample\u0028\u0029",
+            "name": "apiLibraryShowExample",
+            "summary": "",
+            "url": "classes/App-Controller-LibraryApiController.html#method_apiLibraryShowExample"
+        },                {
             "fqsen": "\\App\\Controller\\LibraryController",
             "name": "LibraryController",
             "summary": "",

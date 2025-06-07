@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1749319511">
-  <project timestamp="1749319511">
+<coverage generated="1749319905">
+  <project timestamp="1749319905">
     <package name="App\Card">
       <file name="/home/elk/code/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
         <class name="App\Card\Card" namespace="App\Card">
@@ -557,7 +557,7 @@
       </file>
       <file name="/home/elk/code/dbwebb-kurser/mvc/me/report/src/Controller/LibraryApiController.php">
         <class name="App\Controller\LibraryApiController" namespace="App\Controller">
-          <metrics complexity="3" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="8" coveredelements="0"/>
+          <metrics complexity="4" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="10" coveredelements="0"/>
         </class>
         <line num="15" type="method" name="apiLibraryBooks" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="19" type="stmt" count="0"/>
@@ -567,7 +567,9 @@
         <line num="29" type="stmt" count="0"/>
         <line num="30" type="stmt" count="0"/>
         <line num="32" type="stmt" count="0"/>
-        <metrics loc="35" ncloc="32" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="8" coveredelements="0"/>
+        <line num="35" type="method" name="apiLibraryShowExample" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <metrics loc="41" ncloc="38" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="10" coveredelements="0"/>
       </file>
       <file name="/home/elk/code/dbwebb-kurser/mvc/me/report/src/Controller/LibraryController.php">
         <class name="App\Controller\LibraryController" namespace="App\Controller">
@@ -919,8 +921,8 @@
         </class>
         <line num="31" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="29"/>
         <line num="34" type="stmt" count="29"/>
-        <line num="40" type="method" name="getCards" visibility="public" complexity="1" crap="1" count="9"/>
-        <line num="42" type="stmt" count="9"/>
+        <line num="40" type="method" name="getCards" visibility="public" complexity="1" crap="1" count="10"/>
+        <line num="42" type="stmt" count="10"/>
         <line num="49" type="method" name="addCard" visibility="public" complexity="1" crap="1" count="24"/>
         <line num="51" type="stmt" count="24"/>
         <line num="58" type="method" name="getTotalValue" visibility="public" complexity="7" crap="7" count="22"/>
@@ -945,19 +947,19 @@
         <line num="92" type="stmt" count="15"/>
         <line num="94" type="stmt" count="15"/>
         <line num="95" type="stmt" count="15"/>
-        <line num="96" type="stmt" count="5"/>
-        <line num="97" type="stmt" count="5"/>
+        <line num="96" type="stmt" count="7"/>
+        <line num="97" type="stmt" count="7"/>
         <line num="99" type="stmt" count="15"/>
         <line num="103" type="stmt" count="15"/>
-        <line num="104" type="stmt" count="5"/>
-        <line num="105" type="stmt" count="5"/>
-        <line num="106" type="stmt" count="5"/>
-        <line num="107" type="stmt" count="5"/>
+        <line num="104" type="stmt" count="7"/>
+        <line num="105" type="stmt" count="7"/>
+        <line num="106" type="stmt" count="7"/>
+        <line num="107" type="stmt" count="7"/>
         <line num="109" type="stmt" count="2"/>
         <line num="112" type="stmt" count="15"/>
         <line num="116" type="method" name="hasBlackJack" visibility="public" complexity="2" crap="2" count="14"/>
         <line num="118" type="stmt" count="14"/>
-        <line num="119" type="stmt" count="4"/>
+        <line num="119" type="stmt" count="5"/>
         <line num="121" type="stmt" count="13"/>
         <line num="127" type="method" name="getJSONCards" visibility="public" complexity="1" crap="1" count="2"/>
         <line num="129" type="stmt" count="2"/>
@@ -1095,9 +1097,9 @@
         <line num="210" type="stmt" count="1"/>
         <line num="211" type="stmt" count="1"/>
         <line num="215" type="stmt" count="11"/>
-        <line num="216" type="stmt" count="1"/>
-        <line num="217" type="stmt" count="1"/>
-        <line num="219" type="stmt" count="10"/>
+        <line num="216" type="stmt" count="2"/>
+        <line num="217" type="stmt" count="2"/>
+        <line num="219" type="stmt" count="9"/>
         <line num="226" type="method" name="getAfterGameState" visibility="public" complexity="5" crap="5" count="5"/>
         <line num="229" type="stmt" count="5"/>
         <line num="230" type="stmt" count="1"/>
@@ -1119,8 +1121,8 @@
         <line num="272" type="stmt" count="4"/>
         <line num="273" type="stmt" count="4"/>
         <line num="274" type="stmt" count="4"/>
-        <line num="282" type="method" name="revealDealerCard" visibility="public" complexity="1" crap="1" count="7"/>
-        <line num="284" type="stmt" count="7"/>
+        <line num="282" type="method" name="revealDealerCard" visibility="public" complexity="1" crap="1" count="8"/>
+        <line num="284" type="stmt" count="8"/>
         <line num="291" type="method" name="dealerPlay" visibility="public" complexity="5" crap="5" count="4"/>
         <line num="293" type="stmt" count="4"/>
         <line num="296" type="stmt" count="4"/>
@@ -1201,6 +1203,6 @@
         <metrics loc="44" ncloc="18" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
       </file>
     </package>
-    <metrics files="27" loc="2342" ncloc="2049" classes="26" methods="127" coveredmethods="54" conditionals="0" coveredconditionals="0" statements="899" coveredstatements="274" elements="1026" coveredelements="328"/>
+    <metrics files="27" loc="2348" ncloc="2055" classes="26" methods="128" coveredmethods="54" conditionals="0" coveredconditionals="0" statements="900" coveredstatements="274" elements="1028" coveredelements="328"/>
   </project>
 </coverage>
