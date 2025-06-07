@@ -52,6 +52,17 @@ class ApiController extends AbstractController
                     'url' => '/api/game',
                     'description' => 'Visar upp aktuell ställning i blackjack spelet.',
                 ],
+                [
+                    'request' => 'GET',
+                    'url' => '/api/library/books',
+                    'description' => 'Hämtar alla böcker i biblioteket.',
+                ],
+                [
+                    'request' => 'GET',
+                    'url' => '/api/library/show/{isbn}',
+                    'description' => 'Hämtar en specifik bok med ISBN. Exemplet skickar dig till ett exmpel-ISBN.',
+                    'redirect' => '/api/library/show/9789139030201',
+                ]
             ],
         ];
         return $this->render('api.html.twig', $data);
