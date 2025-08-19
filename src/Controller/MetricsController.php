@@ -4,14 +4,13 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
-final class MetricsController extends AbstractController
+class MetricsController extends AbstractController
 {
-    #[Route('/metrics', name: 'metrics')]
-    public function metrics(): Response
+    #[Route("/metrics", name: "metrics")]
+    public function metrics()
     {
-        return $this->render('metrics/index.html.twig');
+        return $this->render('metrics.html.twig');
     }
-
 }

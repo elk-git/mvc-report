@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Repository\LibraryRepository as BookRepository;
 use Symfony\Component\Routing\Attribute\Route;
 
-final class LibraryApiController extends AbstractController
+class LibraryApiController extends AbstractController
 {
     /**
      * API
