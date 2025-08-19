@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+    <h1>Analys av metrics</h1>
+
+        <ul>
+        <li><a href="{{ path(app.request.attributes.get('_route')) }}#introduktion">Introduktion</a></li>
+        <li><a href="{{ path(app.request.attributes.get('_route')) }}#phpmetrics">Phpmetrics</a></li>
+        <li><a href="{{ path(app.request.attributes.get('_route')) }}#scrutinizer">Scrutinizer</a></li>
+        <li><a href="{{ path(app.request.attributes.get('_route')) }}#forbattringar">Förbättringar</a></li>
+        <li><a href="{{ path(app.request.attributes.get('_route')) }}#matvarde">Mätvärden efter analys (from scrutinizer)</a></li>
+        <li><a href="{{ path(app.request.attributes.get('_route')) }}#Diskussion">Diskussion</a></li>
+    </ul>
+
+    <h2> Mätvärden innan analys <h2>
+    <img src="https://cdn.discordapp.com/attachments/1337791609806258267/1381215763024707645/image.png?ex=68a5a0eb&is=68a44f6b&hm=649b6631dd0d9d90cc2bbada163ddba6c697dde3821d71778d8e1f44e241afe0&"></img>
+
+    <h2 id="introduktion">Introduktion</h2>
+    <p>
+        <b> Codestyle </b> - Handlar om hur ens kod följer en kodstil. Exempelvis identering av variabler, funktioner och klasser och hur if-satser är uppbyggda.
+        <br>
+        <b> Coverage </b> - Handlar om hur mycket av ens kod som testas. I projektet används phpunit för detta och scrutinizer för automatiserade tester. Min coverage enligt scrutinizer är på 32%. Detta är inte jätte högt. Dock testar jag inte koden från de första kmom momenten.
+        <br>
+        <b> Complexity </b> - Handlar om hur komplex ens kod är. Detta mäts genom att analysera hur många if-satser, loopar och funktioner som finns i koden och hur de är uppbyggda. Man bör dock notera att vissa kodbaser kanske kräver en hög complexity, men då bör man nog fokusera på exemeplvis coverage och annat.
+        <br>
+        <b> Cohesion </b> - Huruvida ens kod håller sitt ansvar. Speciellt gällande SINGLE RESPONSIBILITY PRINCIPLE. Det handlar om att varje modul endast ska ha ett ansvar. Exempelvis visar det sig att phpmetrics tycker att min game class inte följer denna princip.
+        <br>
+        <b> Coupling </b> - Hur mycket en klass är beroende av andra klasser. Låg coupling innebär att en klass är självständig, hög coupling innebär att den är beroende av andra klasser. Hög coupling innebär att ett system lättare "går sönder" eftersom saker är väldigt beroende av varandra. Exempelvis från mina phpmetrics är att instability mätvärdet som visar mellan 0 - 1 på hur stabil eller instabil en klass är. Jag har 0.8 på både Game och CardController. Dessa är instabila och är inte idealistiskt (dock behöver man inte notera över controllers i mvc som jag förstår det.). I övrigt har jag en del klasser mellan 0.3 - 0.7 vilket är balanserade, och sedan exempelvis cardhand som är mycket stabil.
+        <br>
+        <b> CRAP </b> - Står för Change risk anti pattern vilket innebär i princip komplexitet och låg testning. Alltså complexity och coverage. Den identitifierar "farlig kod" som bör testas eller undvikas.
+    </p>
+
+    <h2 id="phpmetrics">Phpmetrics</h2>
+    <p><b>Complexity enl. phpmetrics </b> </p>
+    <br>
+    <img style="width: 100%;" src="https://cdn.discordapp.com/attachments/1337791609806258267/1381218233738334329/PhpMetrics_maintainability___complexity.png?ex=68a5a338&is=68a451b8&hm=b64d630ac8670f2560e72b12af10493ed3917808da0a8b13aad5a2db7ce2ed77&"> </img>
+    <p>Bilden ovan visualiseras min complexity i programmet. Storleken på ringarna visualiserar cyklomatisk komplexitet vilket handlar om hur många olika logiska grenar som kan tas. Alltså komplexititen i en klass. Jag har både väldigt små och väldigt stora. Komplexitet krävs dock i programmet. Färgen däremot innebär hur enkel klassen är att underhålla. Enligt phpmetrics beräknas detta utifrån komplexitet, kodlängd och kommentarer. Gröna cirklar är såklart bäst. Den förbättringspotential jag är ute efter är att fixa till min namespace game. Här finns både klassen Game (som är störst av alla och gul) samt DeckOfCards som är gul och stor. CardHand är röd vilket borde förbättras och har en hög komplexitet. </p>
+
+    <br>
+    <p><b>Coupling enl. phpmetrics </b></p>
+    <p>En förbättringspotential jag har sett i phpmetrics gällande coupling är exempelvis mina klasser som har högt AC och EC. Alltså att den både är beroende av andra klasser och andra klasser är beroende av den. Exempelvis min klass player eller CardGraphic som får ett resultat på 0.5 instability. Detta är något som kan åtgärdas.</p>
+    
+    <br>
+    <p><b>God object (Single Responsibility Principle) enl. phpmetrics </b></p>
+    <p>I PHPmetrics såg jag direkt att jag har en violation på min Gamecontroller inte följer SRP principen. Detta borde åtgärads. Exemeplvsi har den för många public methods, lack of cohesion och vet allting.</p>
+    
+    
+    <h2 id="scrutinizer">Scrutinizer</h2>
+    <p><b>Build status</b></p>
+    <p>Jag insåg i efterhand att jag kanske gjorde lite fel eftersom jag åtgärdade build problemet innan jag började med analysen. I vart fall hade jag först problem med att få min build att passera testet. Det handlade om delvis olika problem. Jag testade lite allt möjligt relaterat till felmeddelandet men det slutade med att det sannolikt handlade om att jag inte hade phpunit.xml committad till github.</p>
+    <br>
+    <p><b>Coverage</b></p>
+    <p>Min coverage är på 32%. Detta beror delvis dock på att jag gjorde ett nytt namespace i kmom03 som jag slutade underhålla. Alltså har jag Card/ och Game/ för kortleken och kortspelet. Det är dock så att 32% är ganska lågt. Detta beror delvis på att jag inte kommenterat eller testat mina controllers, vilket är något jag i vart fall borde testa och lära mig och som är en förbättring.</p>
+    <br>
+    
+    <p><b>Scrutinizer score (CRAP och complexity)</b></p>
+    <p>Jag blev förvånad över att jag hade ett mätvärde om 9.92 på scrutinizer. Den  hittar endast 5 grejer på B nivå. En sak här jag noterade var att jag hade ett högt CRAP värde på två metoder vilka jag tänker förbättra. Målet är att försöka nå 10.</p>
+
+    <h2 id="forbattringar">Förbättringar</h2>
+
+    <p> Jag tänker arbeta med följande förbättringar: </p>
+    <ul>
+        <li>Öka kodtäckningen</li>
+        <li>Fokusera på kvalitetsindex i scrutinizer</li>
+        <li>Fixa issues (violations) i phpmetrics relaterade till controllers.</li>
+    </ul>
+
+    <p>Att öka kodtäckningen och issues kommer främst fokusera på controllers. Det ska bli kul att testa att unittesta kontrollers, då det är något jag inte gjorde tidigar. Gällande kvalitetsindex tänker jag implementera lösningar enl. scrutinizer. Egentligen har jag gjort en förbättring redan, vilket var att min build från början inte passerade.</p>
+
+    <p><b>Värden innan förbättring</b></p>
+    <img src="https://cdn.discordapp.com/attachments/1337791609806258267/1381215763024707645/image.png?ex=68a5a0eb&is=68a44f6b&hm=649b6631dd0d9d90cc2bbada163ddba6c697dde3821d71778d8e1f44e241afe0&"></img>
+    <img style="width: 100%;" src="https://cdn.discordapp.com/attachments/1337791609806258267/1381218233738334329/PhpMetrics_maintainability___complexity.png?ex=68a5a338&is=68a451b8&hm=b64d630ac8670f2560e72b12af10493ed3917808da0a8b13aad5a2db7ce2ed77&"></img>
+
+    <br>
+        
+    <h2 id="matvarde">Mätvärden efter och analys (from scrutinizer)</h2>
+    <img src="https://scrutinizer-ci.com/g/elk-git/mvc-report/badges/quality-score.png?b=master"></img>
+    <img src="https://scrutinizer-ci.com/g/elk-git/mvc-report/badges/coverage.png?b=master"></img>
+    <img src="https://scrutinizer-ci.com/g/elk-git/mvc-report/badges/build.png?b=master"></img>
+
+    <p>Jag har arbetata mäst med kodtäckning. Försökt få upp coverage i vart fall en liten del. Jag har 100% kodtäckning på själva spelet (/game), men 0% överallt annars. Därför valde jag att kodtäcka en del controllers. Detta var något jag inte gjorde när vi arbetade med täckning. Därutöver har jag löst klass-violations enl. phpmetrics. Resultatet är förväntat. Jag hade kunnat gjort mer men eftersom jag ligger en del bakom har jag valt att använda min tid effektivt men med resultat.</p>
+    <br>
+    <h2 id="Diskussion">Diskussion</h2>
+
+
+{% endblock %}
