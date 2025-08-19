@@ -15,9 +15,6 @@ build:
                     # version: 8.1.13
                     # version: 8.1.17
                     # version: 8.2.4
-                before_script:
-                    - mkdir -p public/build
-                    - echo '{}' > public/build/manifest.json
         analysis:
             tests:
                 override:
