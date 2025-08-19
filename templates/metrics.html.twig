@@ -6,12 +6,14 @@
     <h1>Analys av metrics</h1>
 
         <ul>
-        <li><a href="{{ path(app.request.attributes.get('_route')) }}#introduktion">Introduktion</a></li>
-        <li><a href="{{ path(app.request.attributes.get('_route')) }}#phpmetrics">Phpmetrics</a></li>
-        <li><a href="{{ path(app.request.attributes.get('_route')) }}#scrutinizer">Scrutinizer</a></li>
-        <li><a href="{{ path(app.request.attributes.get('_route')) }}#forbattringar">Förbättringar</a></li>
-        <li><a href="{{ path(app.request.attributes.get('_route')) }}#matvarde">Mätvärden efter analys (from scrutinizer)</a></li>
-        <li><a href="{{ path(app.request.attributes.get('_route')) }}#Diskussion">Diskussion</a></li>
+        {% set currentRoute = app.request ? app.request.attributes.get('_route') : null %}
+
+        <li><a href="{{ currentRoute ? path(currentRoute) ~ '#introduktion' : '#' }}">Introduktion</a></li>
+        <li><a href="{{ currentRoute ? path(currentRoute) ~ '#phpmetrics' : '#' }}">Phpmetrics</a></li>
+        <li><a href="{{ currentRoute ? path(currentRoute) ~ '#scrutinizer' : '#' }}">Scrutinizer</a></li>
+        <li><a href="{{ currentRoute ? path(currentRoute) ~ '#forbattringar' : '#' }}">Förbättringar</a></li>
+        <li><a href="{{ currentRoute ? path(currentRoute) ~ '#matvarde' : '#' }}">Mätvärden efter analys (from scrutinizer)</a></li>
+        <li><a href="{{ currentRoute ? path(currentRoute) ~ '#Diskussion' : '#' }}">Diskussion</a></li>
     </ul>
 
     <h2> Mätvärden innan analys <h2>

@@ -6,11 +6,13 @@
     <h1>Report</h1>
 
     <ul>
-        <li><a href="{{ path(app.request.attributes.get('_route')) }}#kmom01">Kmom01</a></li>
-        <li><a href="{{ path(app.request.attributes.get('_route')) }}#kmom02">Kmom02</a></li>
-        <li><a href="{{ path(app.request.attributes.get('_route')) }}#kmom03">Kmom03</a></li>
-        <li><a href="{{ path(app.request.attributes.get('_route')) }}#kmom04">kmom04</a></li>
-        <li><a href="{{ path(app.request.attributes.get('_route')) }}#kmom05">Kmom05</a></li>
+    {% set currentRoute = app.request ? app.request.attributes.get('_route') : null %}
+
+    <li><a href="{{ currentRoute ? path(currentRoute) ~ '#kmom01' : '#' }}">Kmom01</a></li>
+    <li><a href="{{ currentRoute ? path(currentRoute) ~ '#kmom02' : '#' }}">Kmom02</a></li>
+    <li><a href="{{ currentRoute ? path(currentRoute) ~ '#kmom03' : '#' }}">Kmom03</a></li>
+    <li><a href="{{ currentRoute ? path(currentRoute) ~ '#kmom04' : '#' }}">Kmom04</a></li>
+    <li><a href="{{ currentRoute ? path(currentRoute) ~ '#kmom05' : '#' }}">Kmom05</a></li>
     </ul>
     
     <h2 id="kmom01">Kmom01</h2>
