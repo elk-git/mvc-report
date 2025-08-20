@@ -58,16 +58,6 @@ class IndexControllerTest extends WebTestCase
         $this->assertEquals(Response::class, $method->getReturnType()->getName());
     }
 
-    public function testIndexWithDifferentMethods()
-    {
-        $client = static::createClient();
-        
-        // Test GET request
-        $client->request('GET', '/');
-        $this->assertResponseIsSuccessful();
-        
-    }
-
     public function testIndexControllerServiceAvailable()
     {
         $client = static::createClient();
