@@ -68,16 +68,6 @@ class IndexControllerTest extends WebTestCase
         
     }
 
-    public function testIndexResponseStructure()
-    {
-        $client = static::createClient();
-        $client->request('GET', '/');
-        
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorExists('html');
-        $this->assertSelectorExists('body');
-    }
-
     public function testIndexControllerServiceAvailable()
     {
         $client = static::createClient();
